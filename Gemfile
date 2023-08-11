@@ -82,5 +82,5 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
 end
-#User auth
-gem "devise", "~> 4.9"
+# User auth
+gem 'devise', '~> 4.9'
