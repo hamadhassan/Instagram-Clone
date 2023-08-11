@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  # Custom routes
+  # Custom contol
   root to: "public#homepage"
 end

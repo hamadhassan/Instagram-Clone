@@ -46,8 +46,7 @@ gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
-
-# Use Bootstrap
+# Use Bootstrap 
 gem 'bootstrap-sass', '~> 3.4.1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -82,5 +81,3 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
 end
-#User auth
-gem "devise", "~> 4.9"
