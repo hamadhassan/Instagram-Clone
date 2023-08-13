@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :authenticate_account!
+  before_action :authenticate_member!
   def index
     #user feed
   end

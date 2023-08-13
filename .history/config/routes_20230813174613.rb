@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :accounts
   # Dashboard
-  get '/dashboard' =>'accounts#index'
+  get '/dashboard' =>
   # Custom routes
   root to: 'public#homepage'
 end

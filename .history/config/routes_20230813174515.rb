@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'public/homepage'
   devise_for :accounts
-  # Dashboard
-  get '/dashboard' =>'accounts#index'
+  
   # Custom routes
   root to: 'public#homepage'
 end
