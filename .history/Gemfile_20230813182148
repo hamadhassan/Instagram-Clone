@@ -65,8 +65,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
-  #local ENV vars
-  gem 'figaro'
+  #
 end
 
 group :test do
@@ -88,7 +87,7 @@ gem 'bootstrap', '~> 5.0.2'
 gem 'devise', '~> 4.9'
 # file upload
 gem 'carrierwave', '~> 3.0'
-# cloud services library :: image upload Amzon S3 ::Problem while installing
-gem 'fog'
+# cloud services library :: image upload Amzon S3
+gem 'fog', '~>2.3'
 # image resizing
 gem 'mini_magick', '~> 4.12'

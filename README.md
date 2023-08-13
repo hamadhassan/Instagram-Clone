@@ -93,8 +93,19 @@ This project is an Instagram clone, a social media platform that allows users to
 * **Important Gem**
 
   ```bash
+  # PostgreSQL
   gem 'pg', '~> 1.1'
+  # Use Bootstrap
   gem 'bootstrap', '~> 5.0.2'
+  # User auth
   gem 'devise', '~> 4.9'
+  # file upload
+  gem 'carrierwave', '~> 3.0'
+  # cloud services library :: image upload Amzon S3
+  gem 'fog', '~>2.3'
+  # image resizing
+  gem 'mini_magick', '~> 4.12'
+   #local ENV vars
+  gem 'figaro'
   
   ```

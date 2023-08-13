@@ -88,7 +88,7 @@ gem 'bootstrap', '~> 5.0.2'
 gem 'devise', '~> 4.9'
 # file upload
 gem 'carrierwave', '~> 3.0'
-# cloud services library :: image upload Amzon S3 ::Problem while installing
+# cloud services library :: image upload Amzon S3
 gem 'fog'
 # image resizing
 gem 'mini_magick', '~> 4.12'
