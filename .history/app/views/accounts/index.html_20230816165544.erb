@@ -20,23 +20,15 @@
     <div class="col-4">
       <div class="account-summery">
         <p>
-         <%= link_to image_tag(current_account.image.variant(resize: "100x100")),
-           class: "img-circle" if current_account.image.present?%>
           <strong>
-            <%= current_account.username %>
+          <%=current_account.username%>
           </strong>
+          </br>
+            <%=current_account.full_name%>
         </p>
-        <p> <%= current_account.full_name%> </p>
       </div>
-    <div class="follower-suggestions">
-      <div class="float-right">
-        <%= link_to "View All", "#", class: "text-dark", style: "text-decoration: none;" %>
+      <div class="follower-suggestions">
       </div>
-      <p class="text-muted"><strong>Suggestions for you</strong></p>
-    </div>
-
-
-
     </div>
   </div>
 </div>
