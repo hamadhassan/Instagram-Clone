@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_one_attached:image
+  has_one_attached
   belongs_to :account
   before_create :set_active
 
