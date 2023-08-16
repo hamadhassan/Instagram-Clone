@@ -1,0 +1,6 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <p>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </p>
+<% end %>
