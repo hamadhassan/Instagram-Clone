@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+        <%= image_tag @current_account.image ,class:"profile-pic" %>
+    </div>
+     <div class="col-8 text-right">
+        <h1> <%= @current_account.full_name%> </h1>
+        <%= link_to 'Edit Profile', edit_account_registration_path , class:"btn btn-secondary"%>
+        <div class="profile-stats"><%= @current_account.posts.count%> Count</div>
+        <div class="profile-stats"><%= @current_account.total_followers%> Followers </div>
+        <div class="profile-stats"><%= @current_account.total_following%> Following</div>
+        <p> <%= @current_account.full_name%> </p>
+        <p> <%=simple_format @current_account.description%> </p>
+        <p> <%= link_to @current_account.website if @current_account.website.present?%> </p>
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-4">
+    </div>
+</div>
+

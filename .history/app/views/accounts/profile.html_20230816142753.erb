@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+    </div>
+     <div class="col-8 text-left">
+        <%= link_to 'Edit Profile', edit_account_registration_path , class:"btn btn-secondary"%>
+        <h1> <%= current_account.full_name%> </h1>
+        <div class="profile-stats"><%= current_account.posts.count%> Count</div>
+        <div class="profile-stats"><%= current_account.total_followers%> Followers </div>
+        <div class="profile-stats"><%= current_account.total_following%> Following</div>
+
+    </div>
+  </div>
+</div>
+
