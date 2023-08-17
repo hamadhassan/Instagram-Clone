@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @posts.each do |post|%>
+        <div class="insta-post">
+           <div class="post-meta">
+              <%=link_to image_tag (post.account.image.variant(resize: "100x100")), class:"img-circle"%>
+              <%=link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
+           </div>
+
+          <%= image_tag (post.image), class:"img img-fluid" %>
+
+          <div class="post-actions">
+            <o class="fa fa-heart fa-2x post-like"> </i>
+            <span class="fa fa-comment fa-2x post-comment"> </span>
+
+          </div>
+
+          <div class="post-details">
+           <p> <strong><%= post.total_likes%> Likes</strong></p>
+           <p> <strong><%= link_to post.account.username, profile_path(post.account.username),class:"text-dark"%></strong></p>
+            <%= simple_format post.description%>
+            <p class="text-muted"><%=time_ago_in_words post.created_at%> ago</p>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <div class="col-4">
+      <div class="account-summery">
+        <p>
+         <%= link_to image_tag(current_account.image.variant(resize: "100x100")),
+           class: "img-circle" if current_account.image.present?%>
+          <strong>
+            <%= current_account.username %>
+          </strong>
+        </p>
+        <p> <%= current_account.full_name%> </p>
+      </div>
+    <div class="follower-suggestions">
+      <div class="float-right">
+        <%= link_to "View All", "#", class: "text-dark", style: "text-decoration: none;" %>
+      </div>
+      <p class="text-muted"><strong>Suggestions for you</strong></p>
+    </div>
+
+
+
+    </div>
+  </div>
+</div>
