@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_070834) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_123405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_070834) do
     t.string "first_name", limit: 20
     t.string "last_name", limit: 20
     t.string "username", limit: 20
-    t.string "image"
     t.string "description"
     t.string "website"
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -75,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_070834) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "image"
     t.boolean "active"
     t.bigint "account_id"
     t.datetime "created_at", null: false

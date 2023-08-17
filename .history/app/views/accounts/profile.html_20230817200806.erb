@@ -1,11 +1,12 @@
 <div class="container">
+  <div class="row">
    <div class="row">
       <div class="col-4">
         <% if @current_account.image.present? %>
           <%= image_tag @current_account.image, class: "img-circle" %>
         <% else %>
           <!-- Display a default image or some placeholder -->
-          <p> No image is available</p>
+          <%= image_tag "default_profile_image.png", class: "img-circle" %>
         <% end %>
       </div>
      <div class="col-8 text-right">

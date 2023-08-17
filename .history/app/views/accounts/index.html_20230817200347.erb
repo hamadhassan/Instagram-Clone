@@ -4,8 +4,7 @@
       <% @posts.each do |post|%>
         <div class="insta-post">
            <div class="post-meta">
-           
-              <%=link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
+          
            </div>
             <% if post.image.present? %>
               <%= image_tag(post.image, class: "img img-fluid") %>
