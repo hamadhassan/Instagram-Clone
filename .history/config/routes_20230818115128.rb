@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   # dashboard
   get '/dashboard', to:'accounts#index'
   get '/profile/:username', to:'accounts#profile' ,as: :profile
-  resources :likes do
-    collection do
+
       get 'save_like/:post_id', to: 'likes#save_like', as: :save_like
     end
   end

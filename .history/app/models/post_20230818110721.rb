@@ -5,11 +5,10 @@ class Post < ApplicationRecord
   belongs_to :account
 
   before_create :set_active
-
+  
   has_many :likes
 
   scope :active, -> { where(active: true) }
-  
   private
   def set_active
     self.active=true

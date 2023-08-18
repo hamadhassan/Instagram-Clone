@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :authenticate_account!
 
   def save_like
-    @like=Like.create(post_id: params[:post_id], account_id: current_account.id)
+    @like=Like.new(post_id: params[:post_id], account_id: current_account.id)
     @post_id=params[:post_id]
     existing_like=Like.where(post_id: params[:post_id], account_id: current_account.id)
     respond_to do |format|

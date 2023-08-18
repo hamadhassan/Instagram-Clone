@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'save_like/:post_id', to: 'likes#save_like', as: :save_like
     end
   end
+  # get 'post/like/:post_id' , to:'likes#save_like' ,as: :like_post
   post "follow/account", to:"accounts#follow_account",as: :follow_account
   resources :posts, only: [:new, :create,:show]
   # custom routes
