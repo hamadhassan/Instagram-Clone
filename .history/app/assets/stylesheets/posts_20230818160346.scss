@@ -1,0 +1,62 @@
+.post-meta{
+  background: #fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #333;
+
+  img{
+    margin-right: 10px;
+  }
+}
+.insta-post{
+  margin-bottom: 15px;
+}
+.profile-post{
+  margin-top: 30px;
+}
+.post-details{
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+
+}
+.post-actions{
+  margin-bottom: 20px;
+  i{
+    margin-right: 10px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  i:hover{
+    color:#999
+  }
+  i.active{
+    color: #ff0000;
+  }
+}
+.comment-box{
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+
+}
+.post-comment{
+  box-shadow: none !important;
+}
+.comment-feed{
+  height: 250px;
+  overflow: scroll;
+}
+.post-details .post-actions{
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.post-stats{
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0,0.5);
+  text-align: center;
+  color: #fff;
+}
