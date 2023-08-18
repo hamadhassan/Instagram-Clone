@@ -14,10 +14,9 @@ class Account < ApplicationRecord
     "#{first_name}" "#{last_name}"
   end
   def total_followers
-    Follower.where(follower_id:self.id).count
+    Follower.where(follower_id:self.id)
   end
   def total_following
-    Follower.where(following_id:self.id).count
-
+    0
   end
 end

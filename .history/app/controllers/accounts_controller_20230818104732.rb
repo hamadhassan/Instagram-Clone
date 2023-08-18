@@ -5,9 +5,7 @@ class AccountsController < ApplicationController
   def index
     #user dashoard - post feed
     @posts= Post.active
-    following_ids=Follower.where(follower_id: current_account.id).map(&:following_id)
-    following_ids<<current_account.id
-    @follower_suggestions=Account.where.not(id: following_ids)
+    @follower_suggestions=Account.where.not(id: current_account.id)
   end
 
   def profile
@@ -18,13 +16,11 @@ class AccountsController < ApplicationController
   def follow_account
     follower_id = current_account.id
     following_id = params[:follow_id]
-    if Follower.create!(follower_id: follower_id, following_id: following_id)
-      flash[:success]="Now Following user"
-    else
-      flash[:danger]="Unable to add follower user"
+    if Follower.create(follower_id: follower_id, following_id: following_id)
+      flash[:"succss"]="Now "
     end
-    redirect_to dashboard_path
-  end
+    redirect_to dashoard_path,
+
   private
 
   def set_account

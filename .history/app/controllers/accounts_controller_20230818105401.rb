@@ -5,9 +5,9 @@ class AccountsController < ApplicationController
   def index
     #user dashoard - post feed
     @posts= Post.active
-    following_ids=Follower.where(follower_id: current_account.id).map(&:following_id)
-    following_ids<<current_account.id
-    @follower_suggestions=Account.where.not(id: following_ids)
+    following_ids=Follower.where(follower_id: current_account.id).map(&:following)
+
+    @follower_suggestions=Account.where.not(id: current_account.id)
   end
 
   def profile

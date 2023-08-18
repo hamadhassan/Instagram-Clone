@@ -7,6 +7,7 @@ class Account < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   has_one_attached:image
+
   has_many :posts
   has_many :likes
 
@@ -14,10 +15,9 @@ class Account < ApplicationRecord
     "#{first_name}" "#{last_name}"
   end
   def total_followers
-    Follower.where(follower_id:self.id).count
+    0
   end
   def total_following
-    Follower.where(following_id:self.id).count
-
+    0
   end
 end
