@@ -12,23 +12,30 @@
               <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email"  ,placeholder:"Email" , class:"form-control mt-3 bg-light"%>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email"  ,placeholder:"password" , class:"form-control mt-3 bg-light"%>
               </div>
 
               <div class="actions">
-                <%= f.submit "Send login link" ,class:"btn btn-primary form-control mt-3 " %>
+                <%= f.submit "Reset Password" %>
               </div>
             <% end %>
             </div>
           <div class="pt-3">
-            <strong> <p><%=link_to 'Create new account', new_account_registration_path, class:"text-decoration-none text-secondary" %></p></strong>
-
+            <%= link_to "Forgot password?", new_password_path(resource_name) ,class:"text-decoration-none" %>
           </div>
       </div>
 
-      <div class="pt-2 border ">
-          <strong><p><%=link_to 'Back to Login', new_account_session_path, class:"text-decoration-none text-secondary" %></p></strong>
+      <div class="mt-4 px-2 py-4 border ">
+        <p>Don't have an account? <%=link_to 'Sign Up', new_account_registration_path, class:"text-decoration-none" %></p>
       </div>
 
   </div>
 </div>
+
+
+
+<h2>Forgot your password?</h2>
+
+
+
+<%= render "devise/shared/links" %>
