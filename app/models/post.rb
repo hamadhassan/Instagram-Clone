@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
-  default_scope {order created_at: :desc}
-  has_one_attached:image
+  default_scope { order created_at: :desc }
+  has_one_attached :image
 
   belongs_to :account
 
@@ -12,7 +14,8 @@ class Post < ApplicationRecord
   scope :active, -> { where(active: true) }
 
   private
+
   def set_active
-    self.active=true
+    self.active = true
   end
 end
