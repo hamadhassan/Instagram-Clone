@@ -10,29 +10,33 @@
            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
               <%= f.hidden_field :reset_password_token %>
+
               <div class="field">
-                <%= f.password_field :password, autofocus: true, autocomplete: "new-password" ,placeholder:"New password" , class:"form-control mt-3 bg-light" %>
+                <%= f.label :password, "New password" %><br />
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                <% end %>
+                <%= f.password_field :password, autofocus: true, autocomplete: "new-password" ,placeholder:"New Password" , class:"form-control mt-3 bg-light" %>
               </div>
 
               <div class="field">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" ,placeholder:"Confirm password" , class:"form-control mt-3 bg-light" %>
+                <%= f.label :password_confirmation, "Confirm new password" %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password"  %>
               </div>
 
               <div class="actions">
-                <%= f.submit "Change my password" ,class:"btn btn-primary form-control mt-3 " %>
+                <%= f.submit "Change my password" %>
               </div>
             <% end %>
             </div>
           <div class="pt-3">
-            <strong><p><%=link_to 'Back to Login', new_account_session_path, class:"text-decoration-none text-secondary" %></p></strong>
-
+            <strong> <p><%=link_to 'Create new account', new_account_registration_path, class:"text-decoration-none text-secondary" %></p></strong>
 
           </div>
       </div>
 
       <div class="pt-2 border ">
-            <strong> <p><%=link_to 'Create new account', new_account_registration_path, class:"text-decoration-none text-secondary" %></p></strong>
-
+          <strong><p><%=link_to 'Back to Login', new_account_session_path, class:"text-decoration-none text-secondary" %></p></strong>
       </div>
 
   </div>

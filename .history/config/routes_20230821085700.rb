@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :accounts
+  get 'passsword/reset', to 'password'
   # dashboard
   get '/dashboard', to: 'accounts#index'
   get '/profile/:username', to: 'accounts#profile', as: :profile

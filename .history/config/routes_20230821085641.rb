@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :accounts
+  
   # dashboard
   get '/dashboard', to: 'accounts#index'
   get '/profile/:username', to: 'accounts#profile', as: :profile
