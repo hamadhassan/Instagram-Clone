@@ -98,6 +98,3 @@ gem 'byebug'
 gem 'jquery-rails'
 # To automatically delete stories after 24 hours
 gem 'sidekiq'
-# Scheduale the time
-gem 'sidekiq-scheduler'
-

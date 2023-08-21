@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :likes
   end
-  resources :stories
+  resources :stories, only: [:new, :create, :destroy]
 
 
 
