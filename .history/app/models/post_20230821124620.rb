@@ -21,6 +21,8 @@ class Post < ApplicationRecord
   def set_active
     self.active = true
   end
+
+
   def validate_images
     return if images.count <= 4
 

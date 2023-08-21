@@ -13,17 +13,19 @@ class Post < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
-  validate :validate_images
-
 
   private
 
   def set_active
     self.active = true
   end
-  def validate_images
-    return if images.count <= 4
 
-    errors.add(:images, 'You can upload max 4 images')
-  end
+  validate :validate_images
+
+private
+def validate_images
+  return if images.count <= 4
+
+  errors.add(:images, 'You can upload max 4 images')
+end
 end

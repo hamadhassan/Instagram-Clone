@@ -30,7 +30,7 @@ $(function(){
       $(this).val('');
     }
   });
-    $('.carousel').carousel({ interval: false });
+  $('.carousel').carousel({ interval: false });
 
     // Add click event handlers for the next and previous buttons
     $('.carousel-control-prev').click(function (e) {

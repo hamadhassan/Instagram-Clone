@@ -1,6 +1,4 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-//= require jquery
-//= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
 
@@ -25,21 +23,9 @@ $(function(){
   });
   $('#image-upload-post').change(function() {
     var files = $(this)[0].files;
-    if (files.length >= 10) {
+    if (files.length > 10) {
       alert("You can only upload a maximum of 10 images.");
       $(this).val('');
     }
   });
-    $('.carousel').carousel({ interval: false });
-
-    // Add click event handlers for the next and previous buttons
-    $('.carousel-control-prev').click(function (e) {
-      e.preventDefault();
-      $(this).closest('.carousel').carousel('prev');
-    });
-
-    $('.carousel-control-next').click(function (e) {
-      e.preventDefault();
-      $(this).closest('.carousel').carousel('next');
-    });
 });

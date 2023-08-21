@@ -6,15 +6,14 @@
            <div class="post-meta">
               <%=link_to profile_picture(post.account,40),profile_path(post.account.username)%>
               <%=link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
-              <span class="text-muted">• <%= time_ago_in_words(post.created_at, include_seconds: true, no_words: true) %></span>
            </div>
             <div id="imageCarousel-<%= post.id %>" class="carousel slide">
-              <!-- Indicators -->
               <ol class="carousel-indicators">
                 <% (0...post.images.count).each do |image_index| %>
                   <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
                 <% end %>
               </ol>
+
               <!-- Slides -->
               <div class="carousel-inner">
                 <% (0...post.images.count).each do |image_index| %>
@@ -23,6 +22,7 @@
                   </div>
                 <% end %>
               </div>
+
               <!-- Controls -->
               <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -33,6 +33,9 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
+
+
+
           <%# End image post %>
 
           <div class="post-details">
@@ -46,6 +49,7 @@
             <p> <strong id="post-<%=post.id%>-likes"><%= post.total_likes_count %> Likes</strong></p>
             <p> <strong id="post-<%=post.id%>-comment"><%= link_to post.account.username, profile_path(post.account.username), class: "text-dark" %></strong></p>
             <%= simple_format post.description %>
+            <p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
             <%= render "posts/comments", post: post%>
           </div>
           <div class="comment-box">

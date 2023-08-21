@@ -21,9 +21,11 @@ class Post < ApplicationRecord
   def set_active
     self.active = true
   end
-  def validate_images
-    return if images.count <= 4
 
-    errors.add(:images, 'You can upload max 4 images')
-  end
+
+    def validate_images
+      return if images.count <= 4
+
+      errors.add(:images, 'You can upload max 4 images')
+    end
 end

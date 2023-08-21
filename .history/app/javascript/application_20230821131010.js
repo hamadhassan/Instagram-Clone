@@ -1,6 +1,4 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-//= require jquery
-//= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
 
@@ -30,16 +28,7 @@ $(function(){
       $(this).val('');
     }
   });
-    $('.carousel').carousel({ interval: false });
+    $('#imageCarousel').carousel();
+    
 
-    // Add click event handlers for the next and previous buttons
-    $('.carousel-control-prev').click(function (e) {
-      e.preventDefault();
-      $(this).closest('.carousel').carousel('prev');
-    });
-
-    $('.carousel-control-next').click(function (e) {
-      e.preventDefault();
-      $(this).closest('.carousel').carousel('next');
-    });
 });
