@@ -2,6 +2,7 @@
 
 class Account < ApplicationRecord
   attr_accessor :password_confirmation
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :username, presence: true, uniqueness: true

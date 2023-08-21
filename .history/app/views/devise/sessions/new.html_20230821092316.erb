@@ -6,9 +6,8 @@
           <%= image_tag 'instagram-text-logo.png' ,size:'200x100'%>
         </div>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="text-danger">
-            <%= flash[:alert] if flash[:alert] %>
-          </div>
+
+         
           <div class="field">
             <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"Email", class:"form-control mt-3 bg-light" %>
           </div>

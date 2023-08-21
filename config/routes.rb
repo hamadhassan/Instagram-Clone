@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   resources :comments, only: [:create]
   resources :public, only: [:homepage]
 
-
   devise_scope :account do
     root to: 'devise/sessions#new'
   end

@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
                                       keys: %i[username first_name last_name email password image description website])
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[username first_name last_name email password])
   end
+
   def after_sign_in_path_for(resource)
     # Customize the redirect path here based on the resource (e.g., user, admin)
     if resource.is_a?(Account)
