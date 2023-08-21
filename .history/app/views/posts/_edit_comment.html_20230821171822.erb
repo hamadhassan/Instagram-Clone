@@ -1,0 +1,41 @@
+<%= form_for @comment do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit "Update Comment" %>
+<% end %>
+Create an update action in your CommentsController to handle the form submission:
+
+ruby
+Copy code
+def update
+  @comment = Comment.find(params[:id])
+  if @comment.update(comment_params)
+    redirect_to @comment.post, notice: "Comment updated successfully."
+  else
+    render 'edit'
+  end
+end
+Delete Comment:
+
+Create a link or button to delete the comment in your view:
+
+html+erb
+Copy code
+<%= link_to "Delete Comment", comment_path(@comment), method: :delete, data: { confirm: "Are you sure?" } if current_user == @comment.user && current_user == @comment.post.user %>
+Create a destroy action in your CommentsController to handle the deletion:
+
+ruby
+Copy code
+def destroy
+  @comment = Comment.find(params[:id])
+  @comment.destroy
+  redirect_to @comment.post, notice: "Comment deleted successfully."
+end
+Make sure your routes are properly configured and include the necessary routes for editing and deleting comments. Also, ensure that you have implemented user authentication so that current_user represents the currently logged-in user.
+
+With these code snippets, users will be able to edit and delete comments on their own posts, and the links/buttons will only be shown to users who are authorized to perform these actions.
+
+
+
+
+
