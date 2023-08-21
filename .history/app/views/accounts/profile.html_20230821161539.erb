@@ -33,27 +33,26 @@
             </div>
           </div>
           <!--images start-->
-             <div id="imageCarousel-<%= post.id %>" class="carousel slide ">
-              <!-- Indicators -->
+              <div id="imageCarousel" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <% (0...post.images.count).each do |image_index| %>
-                  <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
+                <% post.images.each_with_index do |image, index| %>
+                  <li data-target="#imageCarousel" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
                 <% end %>
               </ol>
-              <!-- Slides -->
+
               <div class="carousel-inner post-height">
-                <% (0...post.images.count).each do |image_index| %>
-                  <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
-                    <%= image_tag(post.images[image_index], class: "d-block w-100 img-fluid post-size ") %>
+                <% post.images.each_with_index do |image, index| %>
+                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                    <%= image_tag(image, class: "d-block w-100 img-fluid post-size") %>
                   </div>
                 <% end %>
               </div>
-              <!-- Controls -->
-              <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
+
+              <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
