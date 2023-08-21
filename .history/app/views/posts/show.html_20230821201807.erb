@@ -1,0 +1,75 @@
+<div class="container post-details">
+  <div class="row">
+    <div class="col-8">
+      <div class="insta-post">
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% @post.images.each_with_index do |image, index| %>
+              <li data-target="#imageCarousel" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"></li>
+            <% end %>
+          </ol>
+
+          <div class="carousel-inner post-height">
+            <% @post.images.each_with_index do |image, index| %>
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= image_tag(image, class: "d-block w-100 img-fluid post-size") %>
+              </div>
+            <% end %>
+          </div>
+
+          <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="post-meta">
+          <%=link_to profile_picture(@post.account,40),profile_path(@post.account.username)%>
+          <%=link_to @post.account.username, profile_path(@post.account.username), class:"text-dark" %>
+      </div>
+      <div class="post-details">
+        <div class="comment-feed">
+          <%= simple_format @post.description %>
+            <%= render "posts/comments", post: @post%>
+        </div>
+<i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+        <!-- Like Button -->
+                <% pre_like = @post.likes.find { |like| like.account_id == current_account.id } %>
+                <% if pre_like %>
+                  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete , class:"fa fa-heart "%>
+                <% else %>
+                  <%= button_to 'Like', post_likes_path(@post), method: :post,class:"" %>
+                <% end %>
+
+        <div class="post-actions">
+          <i class="fa fa-heart like-<%= @post.id %> <%= 'active' if post_liked_by_user?(@post.id) %> fa-2x post-like" data-id="<%= @post.id %>"></i>
+          <i class="fa fa-comment fa-2x post-comment" id="post-comment"></i>
+        </div>
+                   <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes' %></p>
+
+            <p class="text-muted"><%= time_ago_in_words @post.created_at %> ago</p>
+
+        </div>
+      <div class="comment-box">
+        <%=form_for @comment do |f|%>
+          <%= f.hidden_field :post_id, value: @post.id%>
+          <%= f.hidden_field :return_to, value: "post"%>
+          <div class="input-group">
+            <%= f.text_field :comment, placeholder:"Add comment here...",class:"form-control post-comment"%>
+            <div class="input-group-append">
+                <%= f.submit "Post", class: "btn btn-success float-right"%>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
