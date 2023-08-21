@@ -15,7 +15,8 @@
                 <p class="card-text">
                   <%= distance_of_time_in_words(Time.now, story.expires_at) %> left
                 </p>
-                <%= button_to "Delete", story_path(story), method: :delete, class: "btn btn-danger" %>
+                          <%= link_to "Delete", story_path(story), method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, class: "btn btn-danger" %>
+
               </div>
             </div>
           </div>

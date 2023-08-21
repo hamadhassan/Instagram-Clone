@@ -19,7 +19,7 @@ class StoriesController < ApplicationController
   def destroy
     @story = current_account.stories.find(params[:id])
     @story.destroy
-    redirect_back(fallback_location: story_path(@story))
+    redirect_to root_path, notice: 'Story deleted successfully.'
   end
   private
 
