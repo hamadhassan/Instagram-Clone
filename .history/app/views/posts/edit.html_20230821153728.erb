@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class=" offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 offset-md-2 col-md-9  text-center ">
+    <div class="border p-5">
+     <h2 class="text-center mt-2"> Edit  new post </h2>
+      <%= render "form"%>
+    </div>
+  </div>
+</div>
+
+
+<%= form_for @post do |f| %>
+  <div class="form-group row pt-3">
+    <%= f.label :image ,class:"col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+      <%= f.file_field :images, multiple:true ,class: "form-control" ,id: "image-upload-post"%>
+    </div>
+  </div>
+
+  <div class="form-group pt-3">
+    <%= f.text_area :description, class: "form-control", placeholder:"Write a caption" %>
+  </div>
+  <div class="pt-3">
+      <%= f.submit "Save Post", class: "btn btn-primary" %>
+  </div>
+<% end %>
