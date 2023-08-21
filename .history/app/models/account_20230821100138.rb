@@ -7,9 +7,9 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true, uniqueness: true
 
-  has_one_attached :image, dependent: :destroy
+  has_one_attached :image
   has_many :posts,dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes
 
   def full_name
     "#{first_name}" "#{last_name}"
