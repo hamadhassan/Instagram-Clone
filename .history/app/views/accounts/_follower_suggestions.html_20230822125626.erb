@@ -1,0 +1,40 @@
+<% @follower_suggestions.each do |account| %>
+  <div class="recommended-follower">
+    <div class="row">
+      <div class=" col-sm-3 col-lg-2">
+          <%= link_to profile_picture(account,40),profile_path(account.username)%>
+      </div>
+      <div class="col-sm-9 col-lg-10">
+        <%= form_tag follow_account_path, method: :post, class:"float-right" do%>
+          <%= hidden_field_tag :follow_id, account.id%>
+          <%= submit_tag "Follow", class: "btn btn-info btn-sm"%>
+        <% end%>
+
+        <%= link_to account.username, profile_path(account.username), class:"text-dark text-decoration-none"%> <br/>
+        <p class="text-muted"><%= account.created_at < 2.days.ago ? "New to Instagram" : "Followed by #{account.total_followers} users" %></p>
+      </div>
+    </div>
+  </div>
+
+
+
+<h1><%= account.username %>'s Profile</h1>
+
+<% if current_account == account %>
+  <p>Your Profile</p>
+<% else %>
+  <% if current_account.following?(account) %>
+    <p>Already Following</p>
+  <% elsif account.private? %>
+    <%= link_to 'Send Follow Request', followers_path(followed_id: account.id), method: :post %>
+  <% else %>
+    <%= link_to 'Follow', followers_path(followed_id: account.id), method: :post %>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+<% end %>
