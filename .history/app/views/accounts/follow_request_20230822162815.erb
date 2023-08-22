@@ -1,0 +1,3 @@
+<% if @follower.accepted == false %>
+  <%= link_to 'Accept Follow Request', accept_follow_request_follower_path(@follower), method: :post, data: { confirm: 'Are you sure you want to accept this follow request?' } %>
+<% end %>
