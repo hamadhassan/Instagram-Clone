@@ -22,4 +22,14 @@ module InstagramClone
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+config.generators do |g|
+  g.orm :active_record
+  g.test_framework :rspec, fixtures: false
+end
 
+ThinkingSphinx::Index.define :account, with: :active_record do
+  indexes :first_name, type: :string
+  indexes :last_name, type: :string
+  indexes :username, type: :string
+  indexes :description, type: :string
+end

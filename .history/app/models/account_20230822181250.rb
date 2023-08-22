@@ -13,7 +13,9 @@ class Account < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :stories, dependent: :destroy
 
+  # Define the search scope
   pg_search_scope :search_by_username_and_email, against: [:username, :email]
+
 
 
   def full_name
