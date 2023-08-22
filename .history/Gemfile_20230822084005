@@ -83,7 +83,6 @@ end
 gem 'bootstrap', '~> 5.0.2'
 # User auth
 gem 'devise', '~> 4.9'
-# jQuery
 gem 'jquery-rails'
 # To automatically delete stories after 24 hours
 gem 'whenever'

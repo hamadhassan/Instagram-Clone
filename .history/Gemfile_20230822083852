@@ -83,9 +83,19 @@ end
 gem 'bootstrap', '~> 5.0.2'
 # User auth
 gem 'devise', '~> 4.9'
-# jQuery
+## Image upload
+# file upload
+gem 'carrierwave'
+# image resizing
+gem 'mini_magick'
+# cloud services library :: image upload Amzon S3 ::Problem while installing
+gem 'fog-aws'
+# Protect the local ENV vars
+gem 'figaro'
+
+gem 'unf'
 gem 'jquery-rails'
 # To automatically delete stories after 24 hours
-gem 'whenever'
+gem 'whenever', require: false
 
 
