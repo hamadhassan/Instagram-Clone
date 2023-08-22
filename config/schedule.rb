@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -21,5 +23,5 @@ every 1.day, at: '8:37 am' do
   rake 'delete_expired_stories'
 end
 
-#command to update the whenever --update-crontab
+# command to update the whenever --update-crontab
 # Learn more: http://github.com/javan/whenever

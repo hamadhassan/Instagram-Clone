@@ -86,8 +86,5 @@ gem 'devise', '~> 4.9'
 # jQuery
 gem 'jquery-rails'
 # To automatically delete stories after 24 hours
-gem 'whenever'
 gem 'pg_search'
-
-
-
+gem 'whenever'

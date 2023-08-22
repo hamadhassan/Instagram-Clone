@@ -24,5 +24,4 @@ Rails.application.routes.draw do
   resources :followers
 
   get 'search/index'
-
 end

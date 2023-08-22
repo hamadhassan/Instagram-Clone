@@ -15,6 +15,6 @@ Account.create([
                    password: 'password' },
                  { username: 'susan', first_name: 'Susan', last_name: 'Bajer', email: 'susanbaker@example.com',
                    password: 'password' },
-                  { username: 'abc', first_name: 'abc', last_name: 'abc', email: 'abc@gmail.com',
-                  password: '123456' }
+                 { username: 'abc', first_name: 'abc', last_name: 'abc', email: 'abc@gmail.com',
+                   password: '123456' }
                ])
