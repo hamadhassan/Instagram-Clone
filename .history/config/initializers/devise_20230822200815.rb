@@ -112,4 +112,3 @@ Devise.setup do |config|
   # won't boot properly.
   # config.reload_routes =
 # rubocop:enable all
-end

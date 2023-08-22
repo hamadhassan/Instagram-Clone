@@ -111,5 +111,3 @@ Devise.setup do |config|
   # requires the Devise mappings to be loaded during boot time the application
   # won't boot properly.
   # config.reload_routes =
-# rubocop:enable all
-end

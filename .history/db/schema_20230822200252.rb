@@ -1,12 +1,12 @@
-# rubocop:disable all
 # frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
 # This file is the source Rails uses to define your schema when running `bin/rails
 # db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
+# be faster and is potentially less error-prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
@@ -16,6 +16,20 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
+  create_accounts_table
+  create_active_storage_attachments_table
+  create_active_storage_blobs_table
+  create_active_storage_variant_records_table
+  create_comments_table
+  create_followers_table
+  create_likes_table
+  create_posts_table
+  create_stories_table
+
+  add_foreign_keys
+end
+
+def create_accounts_table
   create_table 'accounts', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -39,7 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.index ['reset_password_token'], name: 'index_accounts_on_reset_password_token', unique: true
     t.index ['username'], name: 'index_accounts_on_username', unique: true
   end
+end
 
+def create_active_storage_attachments_table
   create_table 'active_storage_attachments', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -47,10 +63,11 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.bigint 'blob_id', null: false
     t.datetime 'created_at', null: false
     t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
-    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
-                                                    unique: true
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness', unique: true
   end
+end
 
+def create_active_storage_blobs_table
   create_table 'active_storage_blobs', force: :cascade do |t|
     t.string 'key', null: false
     t.string 'filename', null: false
@@ -62,13 +79,17 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.datetime 'created_at', null: false
     t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
+end
 
+def create_active_storage_variant_records_table
   create_table 'active_storage_variant_records', force: :cascade do |t|
     t.bigint 'blob_id', null: false
     t.string 'variation_digest', null: false
     t.index %w[blob_id variation_digest], name: 'index_active_storage_variant_records_uniqueness', unique: true
   end
+end
 
+def create_comments_table
   create_table 'comments', force: :cascade do |t|
     t.bigint 'post_id'
     t.bigint 'account_id'
@@ -78,7 +99,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.index ['account_id'], name: 'index_comments_on_account_id'
     t.index ['post_id'], name: 'index_comments_on_post_id'
   end
+end
 
+def create_followers_table
   create_table 'followers', force: :cascade do |t|
     t.bigint 'follower_id'
     t.bigint 'following_id'
@@ -88,7 +111,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.index ['follower_id'], name: 'index_followers_on_follower_id'
     t.index ['following_id'], name: 'index_followers_on_following_id'
   end
+end
 
+def create_likes_table
   create_table 'likes', force: :cascade do |t|
     t.bigint 'account_id'
     t.bigint 'post_id'
@@ -98,7 +123,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.index ['account_id'], name: 'index_likes_on_account_id'
     t.index ['post_id'], name: 'index_likes_on_post_id'
   end
+end
 
+def create_posts_table
   create_table 'posts', force: :cascade do |t|
     t.bigint 'account_id'
     t.datetime 'created_at', null: false
@@ -109,7 +136,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.boolean 'private'
     t.index ['account_id'], name: 'index_posts_on_account_id'
   end
+end
 
+def create_stories_table
   create_table 'stories', force: :cascade do |t|
     t.bigint 'account_id', null: false
     t.datetime 'expires_at'
@@ -117,9 +146,10 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
     t.datetime 'updated_at', null: false
     t.index ['account_id'], name: 'index_stories_on_account_id'
   end
+end
 
+def add_foreign_keys
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'stories', 'accounts'
 end
-# rubocop:enable all

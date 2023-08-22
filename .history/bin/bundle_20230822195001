@@ -1,8 +1,8 @@
-# rubocop:disable all
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# This module encapsulates the bundler launcher functionality.
+require 'rubygems'
+
 module BundlerLauncher
   module_function
 
@@ -90,8 +90,7 @@ module BundlerLauncher
       return
     end
 
-    warning_message = "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
-    warn warning_message
+    warn "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
     exit 42
   end
 
@@ -106,4 +105,3 @@ end
 BundlerLauncher.load_bundler!
 
 load Gem.bin_path('bundler', 'bundle') if BundlerLauncher.invoked_as_script?
-# rubocop:enable all

@@ -1,4 +1,4 @@
-# rubocop:disable all
+# frozen_string_literal: true
 # frozen_string_literal: true
 
 # This migration creates the Active Storage tables for file attachments.
@@ -65,4 +65,3 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
     [primary_key_type, foreign_key_type]
   end
 end
-# rubocop:enable all

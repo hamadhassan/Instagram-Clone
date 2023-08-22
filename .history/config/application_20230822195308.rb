@@ -1,10 +1,4 @@
-# rubocop:disable all
 # frozen_string_literal: true
-require_relative 'boot'
-require 'rails/all'
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
 
 # The main application class for the InstagramClone application.
 module InstagramClone
@@ -21,4 +15,3 @@ module InstagramClone
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-# rubocop:enable all

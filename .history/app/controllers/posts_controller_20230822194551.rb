@@ -49,20 +49,6 @@ class PostsController < ApplicationController
 
   private
 
-  def update_post_images
-    return unless params[:post][:images].present?
-
-    @post.images = Array.wrap(params[:post][:images])
-    @post.save
-  end
-
-  def current_user_cannot_edit_post?
-    return false if @post.account_id == current_account.id
-
-    redirect_to root_path, alert: 'You are not authorized to edit this post.'
-    true
-  end
-
   def set_post
     @post = Post.find(params[:id]) if params[:id].present?
   end

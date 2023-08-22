@@ -1,4 +1,3 @@
-# rubocop:disable all
 # frozen_string_literal: true
 
 # Assuming you have not yet modified this file, each configuration option below
@@ -111,5 +110,4 @@ Devise.setup do |config|
   # requires the Devise mappings to be loaded during boot time the application
   # won't boot properly.
   # config.reload_routes =
-# rubocop:enable all
-end
+  # rubocop:enable all

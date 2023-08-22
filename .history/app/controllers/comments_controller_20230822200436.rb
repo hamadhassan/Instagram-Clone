@@ -5,11 +5,12 @@ class CommentsController < ApplicationController
   before_action :authenticate_account!
   before_action :find_comment, only: %i[edit update destroy]
   before_action :authorize_comment, only: %i[edit update destroy]
+# rubocop:disable Metrics/AbcSize
 
-  # rubocop:disable Metrics/AbcSize
   def create
     @comment = Comment.new(comment_params)
     @comment.account_id = current_account.id if account_signed_in?
+
     if save_comment_and_redirect
       return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path
       redirect_to return_url, flash: { success: 'Comment was created successfully!' }
@@ -18,7 +19,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # rubocop:enable Metrics/AbcSize
   def destroy
     @comment.destroy
     redirect_to @comment.post, notice: 'Comment deleted successfully.'

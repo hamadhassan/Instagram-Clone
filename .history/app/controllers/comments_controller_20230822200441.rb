@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.account_id = current_account.id if account_signed_in?
+
     if save_comment_and_redirect
       return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path
       redirect_to return_url, flash: { success: 'Comment was created successfully!' }
@@ -18,7 +19,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # rubocop:enable Metrics/AbcSize
   def destroy
     @comment.destroy
     redirect_to @comment.post, notice: 'Comment deleted successfully.'

@@ -106,4 +106,3 @@ end
 BundlerLauncher.load_bundler!
 
 load Gem.bin_path('bundler', 'bundle') if BundlerLauncher.invoked_as_script?
-# rubocop:enable all

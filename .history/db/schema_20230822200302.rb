@@ -1,5 +1,5 @@
-# rubocop:disable all
 # frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -122,4 +122,3 @@ ActiveRecord::Schema[7.0].define(version: 20_230_822_062_810) do
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'stories', 'accounts'
 end
-# rubocop:enable all
