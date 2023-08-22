@@ -100,7 +100,6 @@ gem 'jquery-rails'
 gem 'sidekiq'
 # Scheduale the time
 gem 'sidekiq-scheduler'
-
 gem 'whenever', require: false
 
 

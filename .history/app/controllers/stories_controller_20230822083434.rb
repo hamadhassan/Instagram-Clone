@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = current_account.stories.build(story_params)
-    @story.expires_at = 24.hours.from_now
+    @story.expires_at = 1.hours.from_now
 
     if @story.save
       redirect_to root_path, notice: 'Story created successfully.'
