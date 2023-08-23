@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @posts.each do |post|%>
+        <div class="insta-post ">
+           <div class="post-meta d-flex justify-content-between">
+            <div class="d-flex flex-row ">
+              <%=link_to profile_picture(post.account,40),profile_path(post.account.username)%>
+              <%=link_to post.account.username, profile_path(post.account.username), class:"text-dark" %>
+              <span class="text-muted pl-3 "> <%= time_ago_in_words(post.created_at, include_seconds: true, no_words: true) %></span>
+             </div>
+             <div class="d-flex flex-row">
+              <%= button_to "Delete", post_path(post), method: :delete, class: "btn btn-link text-decoration-none text-muted" %>
+              <%= link_to "Edit", edit_post_path(post),class: "btn btn-link text-decoration-none text-muted" %>
+              </div>
+
+           </div>
+            <div id="imageCarousel-<%= post.id %>" class="carousel slide ">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <% (0...post.images.count).each do |image_index| %>
+                  <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
+                <% end %>
+              </ol>
+              <!-- Slides -->
+              <div class="carousel-inner post-height">
+                <% (0...post.images.count).each do |image_index| %>
+                  <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
+                    <%= image_tag(post.images[image_index], class: "d-block w-100 img-fluid post-size ") %>
+                  </div>
+                <% end %>
+              </div>
+              <!-- Controls -->
+              <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          <div class="post-details">
+            <div class="post-actions d-flex row">
+
+
+               <% pre_like = post.likes.find { |like| like.account_id == current_account.id } %>
+                <% if pre_like %>
+                  <%= button_to '', post_like_path(post, pre_like), method: :delete , class:"fa fa-heart fa-2x border-0 bg-white " ,style:"color: #ff0000;"%>
+                <% else %>
+                  <%= button_to '', post_likes_path(post), method: :post,class:"fa fa-heart fa-2x border-0 bg-white",style:"color: #ccc;" %>
+              <% end %>
+                <%= link_to post_path(post.id) do%>
+                  <i class="fa fa-comment fa-2x post-comment"></i>
+                <%end%>
+            </div>
+               <strong>  <p><%= post.likes.count %> <%= (post.likes.count) <=1 ? 'Like' : 'Likes' %></p></str>
+
+           <div class="post-actions d-flex row">
+
+            </div>
+
+            </div>
+
+
+            <!-- Username and description -->
+            <p> <strong id="post-<%=post.id%>-comment"><%= link_to post.account.username, profile_path(post.account.username), class: "text-dark" %></strong></p>
+            <%= simple_format post.description %>
+
+            <%= render "posts/comments", post: post%>
+          </div>
+          <div class="comment-box">
+              <%=form_for @comment do |f|%>
+                <%= f.hidden_field :post_id, value: post.id%>
+                <div class="input-group">
+                  <%= f.text_field :comment, placeholder:"Add comment here...",class:"form-control post-comment"%>
+                  <div class="input-group-append">
+                      <%= f.submit "Post", class: "btn btn-success float-right"%>
+                  </div>
+                </div>
+              <%end%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <div class="col-4">
+      <div class="account-summery">
+        <p class="m-0">
+          <%=link_to profile_picture(current_account,40),profile_path(current_account.username), class:"float-left m-r-15"%>
+          <strong>
+            <%= current_account.username %>
+          </strong></br>
+          <%= current_account.full_name%>
+        </p>
+      </div>
+    <div class="follower-suggestions">
+      <div class="float-right">
+        <%= link_to "View All", "#", class: "text-dark", style: "text-decoration: none;" %>
+      </div>
+      <p class="text-muted"><strong>Suggestions for you</strong></p>
+      <%= render "accounts/follower_suggestions"%>
+    </div>
+    </div>
+  </div>
+</div>

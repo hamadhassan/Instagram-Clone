@@ -1,0 +1,5 @@
+<script>
+  $(document).ready(function() {
+    $('.edit-comment-link').replaceWith("<%= j render 'edit_form', comment: @comment %>");
+  });
+</script>

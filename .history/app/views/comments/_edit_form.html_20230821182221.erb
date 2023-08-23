@@ -1,0 +1,8 @@
+<%= form_for @comment , remote: true do |f| %>
+  <%= f.hidden_field :post_id, value: @post.id%>
+  <%= f.hidden_field :return_to, value: "post"%>
+  <div class="row ml-2 mb-2">
+  <%= f.text_area :comment %>
+  </div>
+  <%= f.submit "Update", class: "btn btn-primary  ml-2" %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_for @comment , remote: true do |f| %>
+  <%= f.hidden_field :post_id, value: @post.id%>
+  <%= f.hidden_field :return_to, value: "post"%>
+  <%= f.label :@comment %>
+  <%= f.text_area :comment %>
+  <%= f.submit "Update Comment" %>
+<% end %>
