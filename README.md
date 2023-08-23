@@ -99,13 +99,9 @@ This project is an Instagram clone, a social media platform that allows users to
   gem 'bootstrap', '~> 5.0.2'
   # User auth
   gem 'devise', '~> 4.9'
-  # file upload
-  gem 'carrierwave', '~> 3.0'
-  # cloud services library :: image upload Amzon S3
-  gem 'fog-aws'
-  # image resizing
-  gem 'mini_magick', '~> 4.12'
-   #local ENV vars
-  gem 'figaro'
+  # jQuery
+  gem 'jquery-rails'
+  # To automatically delete stories after 24 hours
+  gem 'whenever'
   
   ```

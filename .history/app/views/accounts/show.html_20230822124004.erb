@@ -1,0 +1,24 @@
+<h1><%= @user.name %>'s Profile</h1>
+
+<% if current_user == @user %>
+  <p>Your Profile</p>
+<% else %>
+  <% if current_user.following?(@user) %>
+    <p>Already Following</p>
+  <% elsif @user.private? %>
+    <%= link_to 'Send Follow Request', followers_path(followed_id: @user.id), method: :post %>
+  <% else %>
+    <%= link_to 'Follow', followers_path(followed_id: @user.id), method: :post %>
+  <% end %>
+<% end %>
+
+<% if @user.private? && current_user == @user %>
+  <h2>Your Posts</h2>
+  <%= render @posts %>
+<% elsif @user.private? && current_user.following?(@user) %>
+  <h2><%= @user.name %>'s Posts</h2>
+  <%= render @posts %>
+<% else %>
+  <h2>Public Posts</h2>
+  <%= render @posts %>
+<% end %>
