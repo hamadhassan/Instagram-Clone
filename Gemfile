@@ -47,7 +47,6 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 gem 'sassc-rails'
 
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -64,9 +63,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  #gem "spring"
-
-
+  # gem "spring"
 end
 
 group :test do
@@ -93,11 +90,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 # cloud services library :: image upload Amzon S3 ::Problem while installing
 gem 'fog-aws'
-#Protect the local ENV vars
+# Protect the local ENV vars
 gem 'figaro'
-#
 gem 'unf'
 
-gem 'jquery-rails'
 gem 'byebug'
-
+gem 'jquery-rails'

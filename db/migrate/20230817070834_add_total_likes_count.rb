@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTotalLikesCount < ActiveRecord::Migration[7.0]
   def change
     add_column :posts, :total_likes_count, :integer

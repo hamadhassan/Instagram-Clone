@@ -1,0 +1,43 @@
+<div class="container " >
+  <div class="row">
+    <div class="offset-2 col-4">
+        <%= image_tag 'img-public-2.png'%>
+    </div>
+
+    <div class="col-4 ">
+      <div class="border p-5">
+        <div class="text-center">
+        <%= image_tag 'instagram-text-logo.png' ,size:'200x100'%>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"Email", class:"form-control mt-3" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "current-password" ,placeholder:"password" , class:"form-control mt-3"  %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Log in" ,class:"btn btn-primary form-control mt-3 "  %>
+          </div>
+        <% end %>
+
+          <div class="text-center pt-3">
+            <%= link_to "Forgot password?", new_password_path(resource_name) ,class:"text-decoration-none" %>
+          </div>
+      </div>
+
+      <div class="mt-4 px-2 py-4 border ">
+        <p>Don't have an account? <%=link_to 'Sign Up', new_account_registration_path, class:"text-decoration-none" %></p>
+      </div>
+      <div ">
+          <p >Get the app. </p>
+      </div>
+  </div>
+</div>
+
+
+
+
+<%= render "devise/shared/links" %>

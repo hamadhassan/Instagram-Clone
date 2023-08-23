@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+        <%= image_tag 'img-public.png' %>
+    </div>
+    <div>
+        <h1 class="mt-5">Welcome to Instagram Clone</h1>
+        <p class="lead">Please register or sign in to continue </p>
+        <%=link_to 'Sign Up', new_account_registration_path, class:"btn btn-success" %>
+        <%=link_to 'Sign In', new_account_session_path, class:"btn btn-secondary" %>
+
+    </div>
+  </div>
+</div>

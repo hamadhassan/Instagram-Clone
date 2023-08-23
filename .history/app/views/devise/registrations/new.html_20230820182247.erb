@@ -1,0 +1,62 @@
+<div class="container pt-5" >
+  <div class="row">
+    <div class="offset-xl-4 col-xl-4 offset-lg-4 col-lg-4 offset-md-3 col-md-6  text-center ">
+      <div class="border p-5">
+        <div>
+          <%= image_tag 'instagram-text-logo.png' ,size:'200x100'%>
+          <p> Sign up to see photos and videos from your friends.</p>
+        </div>
+        <div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="field">
+                <%= f.text_field :username,  autofocus: true , placeholder:"username", class:"form-control mt-3 bg-light"%>
+              </div>
+
+              <div class="field">
+                <%= f.text_field :first_name ,
+                placeholder:"First name", class:"form-control mt-3 bg-light" %>
+              </div>
+
+              <div class="field">
+                <%= f.text_field :last_name,
+                placeholder:"Last name", class:"form-control mt-3 bg-light"%>
+              </div>
+
+              <div class="field">
+                <%= f.email_field :email, autocomplete: "email" ,
+                placeholder:"Email", class:"form-control mt-3 bg-light" %>
+              </div>
+
+              <div class="field">
+                <%= f.password_field :password, autocomplete: "new-password" ,
+                placeholder:"Password", class:"form-control mt-3 bg-light" %>
+              </div>
+
+              <div class="field">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                placeholder:"Confirm password", class:"form-control mt-3 bg-light"%>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" ,class:"btn btn-primary form-control mt-3 "  %>
+              </div>
+            <% end %>
+          </div>
+          <div class="pt-3">
+            <%= link_to "Forgot password?", new_password_path(resource_name) ,class:"text-decoration-none" %>
+          </div>
+      </div>
+
+      <div class="mt-4 px-2 py-4 border ">
+        <p>Don't have an account? <%=link_to 'Sign Up', new_account_registration_path, class:"text-decoration-none" %></p>
+      </div>
+
+  </div>
+</div>
+
+<h2>Sign up</h2>
+
+
+
+<%= render "devise/shared/links" %>
