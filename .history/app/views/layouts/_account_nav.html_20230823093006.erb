@@ -1,14 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
-      <i class="fa fa-instagram fa-2x pr-2 navbar-brand"></i>
-      <%= link_to "Instagram", dashboard_path, class:"navbar-brand text-decoration-none" %>
-
+    <i class="fa fa-instagram fa-2x pr-2"></i>
+    <%= link_to "Instagram", dashboard_path, class:"navbar-brand text-decoration-none" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto"> <!-- Align items to the right -->
         <!-- If account is signed in, show navigation links -->
         <% if account_signed_in? %>
           <li class="nav-item">
@@ -22,10 +21,10 @@
             </form>
           </li>
           <li class="nav-item">
-            <%= link_to "My Profile", profile_path(current_account.username), class:"nav-link"%>
+            <%= link_to "Post", new_post_path, class:"nav-link"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Post", new_post_path, class:"nav-link"%>
+            <%= link_to "My Profile", profile_path(current_account.username), class:"nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "Stories", stories_path, class:"nav-link"%>
@@ -35,6 +34,12 @@
           </li>
         <% else %>
           <!-- If account not signed in, show login/register links -->
+          <li class="nav-item">
+            <%= link_to "Log In", new_account_session_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_account_registration_path, class:"nav-link"%>
+          </li>
         <% end %>
       </ul>
     </div>

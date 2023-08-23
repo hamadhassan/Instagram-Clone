@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
+    <div>
       <i class="fa fa-instagram fa-2x pr-2 navbar-brand"></i>
       <%= link_to "Instagram", dashboard_path, class:"navbar-brand text-decoration-none" %>
 
@@ -22,10 +23,10 @@
             </form>
           </li>
           <li class="nav-item">
-            <%= link_to "My Profile", profile_path(current_account.username), class:"nav-link"%>
+            <%= link_to "Post", new_post_path, class:"nav-link"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Post", new_post_path, class:"nav-link"%>
+            <%= link_to "My Profile", profile_path(current_account.username), class:"nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "Stories", stories_path, class:"nav-link"%>

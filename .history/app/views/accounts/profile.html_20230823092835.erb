@@ -1,41 +1,40 @@
 <div class="container">
    <div class="row">
-      <div class="col-md-4">
-        <%= profile_picture(@account, 200) %>
+      <div class="col-4">
+        <%= profile_picture(@account,200)%>
       </div>
-      <div class="col-md-8">
-        <h1> <%= @account.full_name %> </h1>
-        <%= link_to 'Edit Profile', edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
+     <div class="col-8 text-left">
+        <h1> <%= @account.full_name%> </h1>
+        <%= link_to 'Edit Profile', edit_account_registration_path , class:"btn btn-secondary" if can_edit_profile? (@account.id)%>
         <div class="row profile-stats">
           <div class="col-4">
-            <%= @account.posts.count %> posts
+            <%= @account.posts.count%> posts
           </div>
           <div class="col-4">
-            <%= @account.total_followers %> Followers
+           <%= @account.total_followers%> Followers
           </div>
           <div class="col-4">
-            <%= @account.total_following %> Following
+           <%= @account.total_following%> Following
           </div>
         </div>
-        <p> <%= @account.full_name %> </p>
-        <p> <%= simple_format @account.description %> </p>
-        <p> <%= link_to @account.website if @account.website.present? %> </p>
-      </div>
-   </div>
-   <hr>
-   <div class="row profile-post">
+        <p> <%= @account.full_name%> </p>
+        <p> <%=simple_format @account.description%> </p>
+        <p> <%= link_to @account.website if @account.website.present?%> </p>
+    </div>
+  </div>
+   <div class="row  profile-post">
       <% if @show_picture %>
-        <% @linked_posts.each do |post| %>
-        <div class="col-md-4">
-          <div class="insta-post post-square">
-            <div class="post-stats">
-              <div class="inner">
-                <i class="fa fa-heart"> <%= post.total_likes_count %> </i>
-                <i class="fa fa-comment m-l-15"> <%= post.total_comments_count %> </i>
-              </div>
+        <% @linked_posts.each do |post|%>
+        <div class="col-4">
+          <div class="insta-post post-square" >
+          <div class="post-stats">
+            <div class="inner ">
+              <i class="fa fa-heart">  <%= post.total_likes_count %>  </i>
+              <i class="fa fa-comment m-l-15"> <%= post.total_comments_count %>  </i>
             </div>
-            <!-- Images start -->
-            <div id="imageCarousel-<%= post.id %>" class="carousel slide">
+          </div>
+          <!--images start-->
+             <div id="imageCarousel-<%= post.id %>" class="carousel slide ">
               <!-- Indicators -->
               <ol class="carousel-indicators">
                 <% (0...post.images.count).each do |image_index| %>
@@ -60,12 +59,12 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
-            <!-- End Images -->
+          <!--end-->
           </div>
         </div>
-      <% end %>
+      <%end%>
     <% else %>
-    <p class="text-center">This Account is Private Follow to see their posts. </p>
+
     <% end %>
-  </div>
+    </div>
 </div>

@@ -11,21 +11,12 @@
       <ul class="navbar-nav ml-auto">
         <!-- If account is signed in, show navigation links -->
         <% if account_signed_in? %>
+         
           <li class="nav-item">
-            <form class="form-inline" method="get" action="<%= search_index_path %>">
-              <div class="input-group">
-                <input type="text" class="form-control" name="query" placeholder="Search users...">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-            </form>
+            <%= link_to "Post", new_post_path, class:"nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "My Profile", profile_path(current_account.username), class:"nav-link"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Post", new_post_path, class:"nav-link"%>
           </li>
           <li class="nav-item">
             <%= link_to "Stories", stories_path, class:"nav-link"%>
