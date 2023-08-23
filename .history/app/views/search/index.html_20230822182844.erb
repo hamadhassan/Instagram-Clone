@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Search Results</h1>
+
+  <% if @results.any? %>
+    <ul class="list-group">
+      <% @results.each do |result| %>
+        <li class="list-group-item">
+         <%= link_to profile_path(result.username)
+          <a href="<%= profile_path(result.username) %>"><%= result.username %></a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="mt-3">No results found.</p>
+  <% end %>
+</div>

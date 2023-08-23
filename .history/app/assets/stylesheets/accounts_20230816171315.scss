@@ -1,0 +1,35 @@
+body{
+  background-color: #fafafa !important;
+ }
+ .account-summery{
+  text-align: left;
+  margin-bottom: 20px;
+ }
+.follower-suggestions{
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.img-circle{
+  width: 200px;
+  border-radius: 50%;
+}
+.profile-stats{
+  width: 120px;
+  float: left;
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+This will create a <div> element with a clearfix applied to ensure that any floated elements within it don't disrupt the layout of subsequent content.
+
+If you're still facing issues after considering these factors, please provide more context or the surrounding code so that I can better assist you in diagnosing the problem.
+
+
+
+
+
+

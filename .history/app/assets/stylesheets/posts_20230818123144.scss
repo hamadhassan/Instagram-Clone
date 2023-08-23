@@ -1,0 +1,40 @@
+.post-meta{
+  background: #fff;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #333;
+
+  img{
+    margin-right: 10px;
+  }
+}
+.insta-post{
+  margin-bottom: 15px;
+}
+.profile-post{
+  margin-top: 30px;
+}
+.post-details{
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+
+}
+.post-actions{
+  margin-bottom: 20px;
+  i{
+    margin-right: 10px;
+    color: #ddd;
+    cursor: pointer;
+  }
+  i:hover{
+    color:#999
+  }
+  i.active{
+    color: #555;
+  }
+}
+.comment-box{
+  
+}

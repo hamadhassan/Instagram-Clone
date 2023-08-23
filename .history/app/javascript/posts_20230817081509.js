@@ -1,0 +1,16 @@
+$(function(){
+  //jquery loaded
+  $(".post-like").on("click",function(){
+    $.ajax({
+      url:
+      [],
+      method: "GET",
+      data: {
+
+      })
+      .done(function{
+
+      })
+    })
+  });
+});

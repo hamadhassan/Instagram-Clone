@@ -1,0 +1,2 @@
+RegistrationsController < Devise::RegistrationsController
+end

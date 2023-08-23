@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-4">
+      <div class="account-summary">
+        <p class="m-0">
+          <%= link_to profile_picture(current_account, 40), profile_path(current_account.username), class: "rounded-circle mr-2" %>
+          <strong><%= current_account.username %></strong></br>
+          <%= current_account.full_name %>
+        </p>
+      </div>
+      <div class="follower-suggestions">
+        <div class="float-right">
+          <%= link_to "View All", followers_path, class: "text-dark", style: "text-decoration: none;" %>
+        </div>
+        <p class="text-muted"><strong>Suggestions for you</strong></p>
+        <%= render "accounts/follower_suggestions" %>
+      </div>
+    </div>
+  </div>
+</div>

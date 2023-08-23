@@ -1,0 +1,82 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-4">
+        <%= profile_picture(@account, 200) %>
+      </div>
+      <div class="col-md-8">
+        <h1> <%= @account.full_name %> </h1>
+        <%= link_to 'Edit Profile', edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
+        <div class="row profile-stats">
+          <div class="col-4">
+            <%= @account.posts.count %> posts
+          </div>
+          <div class="col-4">
+            <%= @account.total_followers %> Follower
+          </div>
+          <div class="col-4">
+            <%= @account.total_following %> Following
+          </div>
+        </div>
+        <p> <%= @account.full_name %> </p>
+        <p> <%= simple_format @account.description %> </p>
+        <p> <%= link_to @account.website if @account.website.present? %> </p>
+      </div>
+   </div>
+   <hr>
+    <div class="row profile-post">
+      <% if @show_picture %>
+        <% @linked_posts.each do |post| %>
+          <% if post.images.count > 1 %>
+            <div class="col-md-4">
+              <div class="">
+                <!-- Images start -->
+                <div id="imageCarousel-<%= post.id %>" class="carousel slide">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <% (0...post.images.count).each do |image_index| %>
+                      <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
+                    <% end %>
+                  </ol>
+                  <!-- Slides -->
+                  <div class="carousel-inner post-height">
+                    <% (0...post.images.count).each do |image_index| %>
+                      <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
+                        <%= image_tag(post.images[image_index], class: "post-square-corosal-profile") %>
+                          <div class="overlay-content">
+                            <i class="fa fa-heart text-muted"></i> <%= post.likes.count %>
+                            <i class="fa fa-comment m-l-15 text-muted"></i> <%= post.total_comments_count %>
+                          </div>
+                      </div>
+                    <% end %>
+                  </div>
+                  <!-- Controls -->
+                  <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only shadow-lg p-3 mb-5 bg-white rounded">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only shadow-lg p-3 mb-5 bg-white rounded">Next</span>
+                  </a>
+                </div>
+                <!-- End Images -->
+              </div>
+            </div>
+          <% else %>
+            <!-- Display a single image without the carousel -->
+          <div class="post  ">
+            <%= image_tag(post.images[0], class: "post-square-profile mx-1") %>
+            <div class="post-overlay">
+              <div class="overlay-content">
+                <i class="fa fa-heart"></i> <span class="likes-count"><%= post.likes.count %></span>
+                <i class="fa fa-comment m-l-15"></i> <span class="comment-count"><%= post.total_comments_count %></span>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      <% else %>
+      <p class="text-center">This Account is Private. Follow to see their posts.</p>
+      <% end %>
+    </div>
+</div>

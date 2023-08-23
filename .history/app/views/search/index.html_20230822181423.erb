@@ -1,0 +1,17 @@
+<!-- app/views/search/index.html.erb -->
+<h1>Search Results</h1>
+
+<%= form_tag(search_index_path, method: :get) do %>
+  <%= text_field_tag :query, params[:query], placeholder: 'Search users...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% if @results.any? %>
+  <ul>
+    <% @results.each do |result| %>
+      <li><%= result.username %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>

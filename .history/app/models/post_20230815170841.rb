@@ -1,0 +1,7 @@
+class Post < ApplicationRecord
+  belongs_to :account
+  scope active, -> { where active => true}
+
+  private
+  def se
+end
