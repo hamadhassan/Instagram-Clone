@@ -9,12 +9,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Account.create([
-                 { username: 'john', first_name: 'John', last_name: 'Doe', email: 'johndoe@example.com',
-                   password: 'password' },
-                 { username: 'jane', first_name: 'Jane', last_name: 'Smith', email: 'janesmith@example.com',
-                   password: 'password' },
-                 { username: 'susan', first_name: 'Susan', last_name: 'Bajer', email: 'susanbaker@example.com',
-                   password: 'password' },
-                  { username: 'abc', first_name: 'abc', last_name: 'abc', email: 'abc@gmail.com',
-                  password: '123456' }
+                 { username: 'john', full_name: 'John Doe', email: 'johndoe@example.com',
+                   password: 'password', private: 'false' },
+                 { username: 'jane', full_name: 'Jane Smith', email: 'janesmith@example.com',
+                   password: 'password', private: 'false' },
+                 { username: 'susan', full_name: 'Susan Bajer', email: 'susanbaker@example.com',
+                   password: 'password', private: 'false' },
+                 { username: 'hamad', full_name: 'Hammad Hassan', email: 'hamad@gmail.com',
+                   password: '123456', private: 'false' },
+                 { username: 'ahmed', full_name: 'Ahmed Hassan', email: 'ahmed@gmail.com',
+                   password: '123456', private: 'false' }
                ])

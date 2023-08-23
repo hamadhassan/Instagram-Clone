@@ -9,15 +9,15 @@ This project is an Instagram clone, a social media platform that allows users to
 - **Photo Sharing**: Users can upload photos from their devices. They can also like and comment on photos uploaded by other users.
 - **News Feed**: The home screen displays a feed of photos and updates from users the logged-in user follows. 
 - **Search Functionality**: Users can search for other users, hashtags, and content, making it easy to find and connect with friends and interests.
-- **Follow and Unfollow**: Users can follow and unfollow other users to curate their feed and stay updated on their friends' activities.
+- **Follow and Accept Follow**: Users can follow and accept follow from other users to curate their feed and stay updated on their friends' activities.
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS(Bootstrap), JavaScript 
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript 
 - **Backend**: Ruby on Rails
 - **Database**: PostgreSQL 
 - **Authentication**: Devise
-- **Image Storage**: Cloud storage service (e.g., Amazon S3)
+- **Image Storage**: Active Storages 
 
 ## Getting Started
 
@@ -103,5 +103,9 @@ This project is an Instagram clone, a social media platform that allows users to
   gem 'jquery-rails'
   # To automatically delete stories after 24 hours
   gem 'whenever'
+  # Code debugging
+  gem 'byebug'
+  # Quick research
+  gem 'pg_search'
   
   ```

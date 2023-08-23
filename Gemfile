@@ -87,7 +87,9 @@ gem 'devise', '~> 4.9'
 gem 'jquery-rails'
 # To automatically delete stories after 24 hours
 gem 'whenever'
+# Code debugging
+gem 'byebug'
+# Quick research
 gem 'pg_search'
-
-
-
+# Generate ERD
+gem 'rails-erd', group: :development

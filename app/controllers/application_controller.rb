@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:account_update,
-                                      keys: %i[username first_name last_name email password image description website private])
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username first_name last_name email password])
+                                      keys: %i[username full_name email password image description website
+                                               private])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username full_name email password])
   end
 
   def after_sign_in_path_for(resource)
