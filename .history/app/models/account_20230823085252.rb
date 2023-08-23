@@ -16,6 +16,10 @@ class Account < ApplicationRecord
 
   pg_search_scope :search_by_username_and_email, against: %i[username email]
 
+  def full_name
+    "#{first_name}" "#{last_name}"
+  end
+
   def total_followers
     Follower.where(follower_id: id).count
   end

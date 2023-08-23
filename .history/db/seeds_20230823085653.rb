@@ -17,6 +17,6 @@ Account.create([
                    password: 'password' },
                  { username: 'hamad', full_name: 'Hammad Hassan', email: 'hamad@gmail.com',
                    password: '123456' },
-                 { username: 'ahmed', full_name: 'Ahmed Hassan', email: 'ahmed@gmail.com',
-                   password: '123456' }
+                   { username: 'ahmed', full_name: 'Ahmed Hassan', email: 'ahmed@gmail.com',
+                    password: '123456' }
                ])
