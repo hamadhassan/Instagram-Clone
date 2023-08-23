@@ -28,8 +28,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    return if current_user_cannot_edit_post?
-
     @post.destroy
     redirect_to root_path, notice: 'Post deleted successfully.'
   end

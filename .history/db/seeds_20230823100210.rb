@@ -10,13 +10,13 @@
 
 Account.create([
                  { username: 'john', full_name: 'John Doe', email: 'johndoe@example.com',
-                   password: 'password' ,private: 'false'},
+                   password: 'password' },
                  { username: 'jane', full_name: 'Jane Smith', email: 'janesmith@example.com',
-                   password: 'password',private: 'false' },
+                   password: 'password' },
                  { username: 'susan', full_name: 'Susan Bajer', email: 'susanbaker@example.com',
-                   password: 'password',private: 'false' },
+                   password: 'password' },
                  { username: 'hamad', full_name: 'Hammad Hassan', email: 'hamad@gmail.com',
-                   password: '123456',private: 'false' },
+                   password: '123456' },
                  { username: 'ahmed', full_name: 'Ahmed Hassan', email: 'ahmed@gmail.com',
-                   password: '123456',private: 'false' }
+                   password: '123456'private: true }
                ])

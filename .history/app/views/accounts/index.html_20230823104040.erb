@@ -11,7 +11,7 @@
           <div class="d-flex flex-row">
             <% if post.account_id == current_account.id %>
               <%= button_to "Delete", post_path(post), method: :delete, class: "btn btn-link text-muted text-decoration-none" %>
-              <%= link_to "Edit", edit_post_path(post), class: "btn btn-link text-muted text-decoration-none" %>
+              <%= link_to "Edit", edit_post_path(post), class: "btn btn-link text-muted tex-decoration-none" %>
             <% end %>
           </div>
         </div>
@@ -96,7 +96,7 @@
           <%= current_account.full_name %>
         </p>
       </div>
-      <div class="follower-suggestions mt-4">
+      <div class="follower-suggestions">
         <div class="float-right">
           <%= link_to "View All", followers_path, class: "text-dark", style: "text-decoration: none;" %>
         </div>
