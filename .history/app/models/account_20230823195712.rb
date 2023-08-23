@@ -7,10 +7,11 @@ class Account < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  #validation
+  
   validates :username, presence: true, uniqueness: true
-  validate :image_format
-  #assoication
+  validate :image_is_an_image
+
+
   has_one_attached :image, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -28,13 +29,5 @@ class Account < ApplicationRecord
 
   def likes?(post)
     likes.exists?(post:, liked: true)
-  end
-
-  private
-
-  def image_format
-    if image.attached? && !image.content_type.in?(%w(image/jpeg image/png))
-      errors.add(:image, "Only JPEG and PNG images are allowed")
-    end
   end
 end
