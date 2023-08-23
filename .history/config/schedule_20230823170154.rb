@@ -23,5 +23,5 @@ every 1.day, at: '11:59 pm' do
   rake 'delete_expired_stories'
 end
 
-# command to update the $whenever --update-crontab
+# command to update the whenever --update-crontab
 # Learn more: http://github.com/javan/whenever

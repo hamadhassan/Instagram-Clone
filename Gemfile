@@ -93,4 +93,3 @@ gem 'byebug'
 gem 'pg_search'
 # Generate ERD
 gem 'rails-erd', group: :development
-

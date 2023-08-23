@@ -9,7 +9,6 @@ $(function(){
     $("comment_comment").focus();
   $(".post-like").on("click",function(){
   });
-  
   $('#registration-form').on('submit', function() {
     $(this).find('input[type=text], input[type=email], input[type=password]').val('');
   });
