@@ -16,7 +16,7 @@
           </div>
         </div>
 
-       <% if post.images.count > 1 %>
+       <%# <% if post.images.count > 1 %>
           <div id="imageCarousel-<%= post.id %>" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -42,10 +42,10 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-        <% else %>
+        <%# <% else %>
           <%# Display a single image without the carousel %>
-          <%= image_tag(post.images[0], class: "img-fluid") %>
-        <% end %>
+          <%# <%= image_tag(post.images[0], class: "img-fluid") %>
+        <% end %> %> %>
 
         <div class="card-body ">
          <div class="d-flex align-items-left ">

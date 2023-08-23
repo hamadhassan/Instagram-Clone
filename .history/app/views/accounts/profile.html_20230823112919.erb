@@ -65,7 +65,7 @@
           <% else %>
             <!-- Display a single image without the carousel -->
           <div class="post">
-            <%= image_tag(post.images[0], class: "img-fluid post-square mx-1") %>
+            <%= image_tag(post.images[0], class: "img-fluid post-square") %>
             <div class="post-overlay">
               <div class="overlay-content">
                 <i class="fa fa-heart"></i> <span class="likes-count"><%= post.likes.count %></span>

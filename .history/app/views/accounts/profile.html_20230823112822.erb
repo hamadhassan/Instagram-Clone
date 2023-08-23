@@ -28,8 +28,13 @@
         <% @linked_posts.each do |post| %>
           <% if post.images.count > 1 %>
             <div class="col-md-4">
-              <div class="insta-post post-square">
-
+             <div class="post-overlay">
+              <div class="overlay-content">
+                <i class="fa fa-heart"></i> <span class="likes-count"><%= post.likes.count %></span>
+                <i class="fa fa-comment m-l-15"></i> <span class="comment-count"><%= post.total_comments_count %></span>
+              </div>
+            </div>
+              
                 <!-- Images start -->
                 <div id="imageCarousel-<%= post.id %>" class="carousel slide">
                   <!-- Indicators -->
@@ -65,7 +70,7 @@
           <% else %>
             <!-- Display a single image without the carousel -->
           <div class="post">
-            <%= image_tag(post.images[0], class: "img-fluid post-square mx-1") %>
+            <%= image_tag(post.images[0], class: "img-fluid post-square") %>
             <div class="post-overlay">
               <div class="overlay-content">
                 <i class="fa fa-heart"></i> <span class="likes-count"><%= post.likes.count %></span>

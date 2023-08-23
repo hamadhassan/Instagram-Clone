@@ -17,35 +17,35 @@
         </div>
 
        <% if post.images.count > 1 %>
-          <div id="imageCarousel-<%= post.id %>" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <% post.images.each_with_index do |image, image_index| %>
-                <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
-              <% end %>
-            </ol>
-            <!-- Slides -->
-            <div class="carousel-inner">
-              <% post.images.each_with_index do |image, image_index| %>
-                <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
-                  <%= image_tag(image, class: "d-block w-100 img-fluid") %>
-                </div>
-              <% end %>
-            </div>
-            <!-- Controls -->
-            <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        <% else %>
-          <%# Display a single image without the carousel %>
-          <%= image_tag(post.images[0], class: "img-fluid") %>
-        <% end %>
+  <div id="imageCarousel-<%= post.id %>" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% post.images.each_with_index do |image, image_index| %>
+        <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
+      <% end %>
+    </ol>
+    <!-- Slides -->
+    <div class="carousel-inner">
+      <% post.images.each_with_index do |image, image_index| %>
+        <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
+          <%= image_tag(image, class: "d-block w-100 img-fluid") %>
+        </div>
+      <% end %>
+    </div>
+    <!-- Controls -->
+    <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+<% else %>
+  <%# Display a single image without the carousel %>
+  <%= image_tag(post.images[0], class: "img-fluid") %>
+<% end %>
 
         <div class="card-body ">
          <div class="d-flex align-items-left ">

@@ -99,7 +99,10 @@
   position: relative;
   display: inline-block;
 }
-
+.post img {
+  width: 200px;
+  height: 200px; 
+}
 
 .post-overlay {
   position: absolute;

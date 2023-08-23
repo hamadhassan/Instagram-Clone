@@ -100,7 +100,6 @@
   display: inline-block;
 }
 
-
 .post-overlay {
   position: absolute;
   top: 0;
@@ -121,14 +120,4 @@
 .post:hover .post-overlay {
   display: flex;
   opacity: 1;
-}
-
-.overlay-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.likes-count, .comment-count {
-  margin-left: 5px;
 }

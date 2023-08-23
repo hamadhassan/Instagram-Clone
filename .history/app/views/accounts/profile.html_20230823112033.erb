@@ -29,7 +29,12 @@
           <% if post.images.count > 1 %>
             <div class="col-md-4">
               <div class="insta-post post-square">
-
+                <div class="post-stats">
+                  <div class="inner">
+                    <i class="fa fa-heart"> <%= post.total_likes_count %> </i>
+                    <i class="fa fa-comment m-l-15"> <%= post.total_comments_count %> </i>
+                  </div>
+                </div>
                 <!-- Images start -->
                 <div id="imageCarousel-<%= post.id %>" class="carousel slide">
                   <!-- Indicators -->
@@ -64,16 +69,13 @@
             </div>
           <% else %>
             <!-- Display a single image without the carousel -->
-          <div class="post">
-            <%= image_tag(post.images[0], class: "img-fluid post-square mx-1") %>
-            <div class="post-overlay">
-              <div class="overlay-content">
+           <div class="post">
+              <%= image_tag(post.images[0], class: "img-fluid post-square pl-4") %>
+              <div class="post-overlay">
                 <i class="fa fa-heart"></i> <span class="likes-count"><%= post.likes.count %></span>
                 <i class="fa fa-comment m-l-15"></i> <span class="comment-count"><%= post.total_comments_count %></span>
               </div>
-            </div>
           </div>
-
 
 
           <% end %>
