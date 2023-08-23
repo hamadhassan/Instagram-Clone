@@ -11,17 +11,7 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
             <% if account_signed_in? %>
-                <li class="nav-item">
-                  <form class="form-inline" method="get" action="<%= search_index_path %>">
-                    <div class="input-group">
-                      <input type="text" class="form-control" name="query" placeholder="Search users...">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </form>
-                </li>
-                <li class="nav-item">
+             <li class="nav-item">
                   <%= link_to "Dashboard", dashboard_path, class:"nav-link"%>
                 </li>
                 <li class="nav-item">
@@ -36,7 +26,16 @@
                 <li class="nav-item">
                   <%= button_to "Sign Out", destroy_account_session_path, method: :delete ,class:"btn btn-link text-decoration-none text-muted"%>
                 </li>
-
+<li class="nav-item">
+          <form class="form-inline" method="get" action="<%= search_index_path %>">
+            <div class="input-group">
+              <input type="text" class="form-control" name="query" placeholder="Search users...">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </li>
 
             <%else%>
             <%end%>

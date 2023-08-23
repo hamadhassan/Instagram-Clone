@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  include PgSearch::Model
   attr_accessor :password_confirmation
 
   devise :database_authenticatable, :registerable,
@@ -12,8 +11,12 @@ class Account < ApplicationRecord
   has_many :posts,dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :stories, dependent: :destroy
+  include PgSearch::Model
+  
 
+  # Define the search scope
   pg_search_scope :search_by_username_and_email, against: [:username, :email]
+
 
 
   def full_name

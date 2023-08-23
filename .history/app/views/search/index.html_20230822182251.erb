@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Search Results</h1>
+
+  <% if @results.any? %>
+    <ul class="list-group">
+      <% @results.each do |result| %>
+        <li class="list-group-item"><%= result.username %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="mt-3">No results found.</p>
+  <% end %>
+
+</div>
+
+<!-- Include Bootstrap JS (optional) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+In this example, we've added Bootstrap classes to style your search results:
+
+We included the Bootstrap CSS and JavaScript libraries via CDN in the <head> section.
+We wrapped your content in a Bootstrap container (<div class="container">) to control the layout and spacing.
+The <h1> element is given the mb-4 class to add margin at the bottom.
+The list of search results is styled using Bootstrap's list-group component.
+Each result item is a list-group-item.
+If no results are found, we added a mt-3 class to the paragraph to add margin at the top.
+Make sure to adjust the CDN links to the latest Bootstrap version if needed, and customize the classes and styles according to your project's design requirements.
+
+

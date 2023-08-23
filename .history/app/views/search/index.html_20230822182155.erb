@@ -1,0 +1,12 @@
+<!-- app/views/search/index.html.erb -->
+<h1>Search Results</h1>
+<% if @results.any? %>
+  <ul>
+    <% @results.each do |result| %>
+      <li><%= result.username %></li>
+        <li><%= result.username %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>
+<% end %>
