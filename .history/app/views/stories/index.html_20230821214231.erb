@@ -1,0 +1,17 @@
+<!-- app/views/stories/index.html.erb -->
+<h2>Stories</h2>
+
+<div class="story-list">
+  <% @stories.each do |story| %>
+    <div class="story">
+      <%= image_tag story.image %>
+      <!-- Add additional information like story owner and time remaining -->
+      <p>Owner: <%= story.account.username %></p>
+      <p>Time Remaining: <%= time_ago_in_words(story.expires_at) %> left</p>
+    </div>
+  <% end %>
+</div>
+
+
+
+<%= link_to "Add a New Story", new_story_path %>

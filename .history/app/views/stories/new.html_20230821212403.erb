@@ -1,0 +1,24 @@
+<!-- app/views/stories/new.html.erb -->
+<h2>Add a New Story</h2>
+
+<%= form_with(model: @story, url: stories_path, method: :post, local: true, multipart: true) do |form| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+      <ul>
+        <% @story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Story" %>
+  </div>
+<% end %>

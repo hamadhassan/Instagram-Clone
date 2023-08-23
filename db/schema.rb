@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_135052) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_161316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_135052) do
     t.index ["account_id"], name: "index_posts_on_account_id"
   end
 
+  create_table "stories", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_stories_on_account_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "stories", "accounts"
 end

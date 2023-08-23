@@ -1,0 +1,21 @@
+<h2 class="mt-3">Stories</h2>
+
+<div class="d-flex flex-wrap">
+  <% @stories.each do |story| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= <%= image_tag 'filename' %>%>
+        <img src="<%= rails_blob_path(story.image) %>" class="card-img-top" alt="Story Image">
+        <div class="card-body">
+          <h5 class="card-title">Owner: <%= story.account.username %></h5>
+          <p class="card-text">
+            Time Remaining: <%= distance_of_time_in_words(Time.now, story.expires_at) %> left
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= link_to "Add a New Story", new_story_path %>

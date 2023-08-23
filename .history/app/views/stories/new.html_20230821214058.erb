@@ -1,0 +1,14 @@
+<!-- app/views/stories/new.html.erb -->
+<h2>Add a New Story</h2>
+
+<%= form_with(model: @story do |form| %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Story" %>
+  </div>
+<% end %>
