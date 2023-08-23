@@ -13,7 +13,7 @@ class Account < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :stories, dependent: :destroy
-  has_many :followers, class_name: 'Follower', foreign_key: 'following_id'
+#  has_many :followers, class_name: 'Follower', foreign_key: 'following_id'
   pg_search_scope :search_by_username_and_email, against: %i[username email]
 
   def total_followers

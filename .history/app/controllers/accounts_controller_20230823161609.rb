@@ -6,11 +6,11 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[profile]
   def index
     @comment = Comment.new
-    following_ids = Follower.where(following_id: current_account.id).map(&:follower_id)
+    following_ids = Follower.where(follower_id: current_account.id).map(&:following_id)
     following_ids << current_account.id
     @follower_suggestions = Account.where.not(id: following_ids).limit(2)
-    @posts = Post.joins(account: :followers).where(followers: { accepted: true,
-                                                                following_id: current_account.id }).distinct
+
+    @posts = Post.joins(account: :followers).where(followers: { accepted: true ,followe_id: current_account.id})
   end
 
   def profile
@@ -32,9 +32,9 @@ class AccountsController < ApplicationController
     existing_follower = Follower.find_by(follower_id: current_account.id, following_id:)
 
     if following_account.private?
-      create_follower(current_account.id, following_id, false) unless existing_follower
+      create_follower( current_account.id,following_id, false) unless existing_follower
     else
-      create_follower(current_account.id, following_id, true) unless existing_follower
+      create_follower( current_account.id,following_id, true) unless existing_follower
     end
 
     redirect_to dashboard_path
@@ -47,12 +47,11 @@ class AccountsController < ApplicationController
     return unless follower
 
     follower.update(accepted: true)
-    redirect_to dashboard_path
   end
 
   private
 
-  def create_follower(following_id, follower_id, accepted)
+  def create_follower(following_id,follower_id,accepted)
     Follower.create!(following_id:, follower_id:, accepted:)
   end
 
