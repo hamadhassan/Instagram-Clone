@@ -89,8 +89,7 @@ gem 'jquery-rails'
 gem 'whenever'
 # Code debugging
 gem 'byebug'
-# Quick research
+# Quick research 
 gem 'pg_search'
-# Generate ERD
 gem 'rails-erd', group: :development
 
