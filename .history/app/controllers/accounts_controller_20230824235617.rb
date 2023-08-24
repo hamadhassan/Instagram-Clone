@@ -17,10 +17,15 @@ class AccountsController < ApplicationController
     current_account_posts=Post.where(account_id: current_account.id)
     following_ids_list = current_account.following.pluck(:id)
     following_acount_public_post=Post.where(account_id: following_ids,private: false)
-    private_accounts_request_accepted = Account.joins(:following_accounts)
-                  .where(following_accounts: { follower_id: current_account.id, accepted: true })
-    following_account_private_post=Post.where(account_id: private_accounts_request_accepted, private: true)
+    following_account_private_post=Post.where(account_id: following_ids, private: true)
+    @private_accounts_request = Account.joins(:followed_accounts)
+                 .where(followed_accounts: { following_id: current_account_id, accepted: false })
+    # accepted_following_accounts = Account.joins(:following_accounts).where(relationships: { accepted: false }).distinct
+    # @posts = Post.where(account_id: following_ids_list,private: true, account: accepted_following_accounts)
 
+    # @posts = Post.where(account_id: following_ids_list,private: false)
+
+      # @posts = @posts.or(private_posts)
     #  @posts = @posts.order(created_at: :desc)
 
 

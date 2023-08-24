@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
     following_ids_list = current_account.following.pluck(:id)
     following_acount_public_post=Post.where(account_id: following_ids,private: false)
     private_accounts_request_accepted = Account.joins(:following_accounts)
-                  .where(following_accounts: { follower_id: current_account.id, accepted: true })
+                  .where(following_accounts: { following_id: current_account.id, accepted: true })
     following_account_private_post=Post.where(account_id: private_accounts_request_accepted, private: true)
 
     #  @posts = @posts.order(created_at: :desc)
