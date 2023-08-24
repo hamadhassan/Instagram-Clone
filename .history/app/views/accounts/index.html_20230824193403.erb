@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+    <% @posts.each do |post|%>
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <%= link_to profile_picture(post.account, 40), profile_path(post.account.id), class: "mr-2 rounded-circle" %>
+            <%= link_to post.account.username, profile_path(post.account.id), class: "text-dark font-weight-bold" %>
+          </div>
+          <div class="d-flex flex-row">
+            <% if post.account_id == current_account.id %>
+              <%= button_to "Delete", post_path(post), method: :delete, class: "btn btn-link text-muted text-decoration-none" %>
+              <%= link_to "Edit", edit_post_path(post), class: "btn btn-link text-muted text-decoration-none" %>
+            <% end %>
+          </div>
+        </div>
+
+       <% if post.images.count > 1 %>
+          <div id="imageCarousel-<%= post.id %>" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <% post.images.each_with_index do |image, image_index| %>
+                <li data-target="#imageCarousel-<%= post.id %>" data-slide-to="<%= image_index %>" <%= image_index == 0 ? 'class="active"' : '' %>></li>
+              <% end %>
+            </ol>
+            <!-- Slides -->
+            <div class="carousel-inner">
+              <% post.images.each_with_index do |image, image_index| %>
+                <div class="carousel-item <%= image_index == 0 ? 'active' : '' %>">
+                  <%= image_tag(image, class: "post-square-corosal") %>
+                </div>
+              <% end %>
+            </div>
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#imageCarousel-<%= post.id %>" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only shadow-lg p-3 mb-5 bg-white rounded">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#imageCarousel-<%= post.id %>" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only shadow-lg p-3 mb-5 bg-white rounded">Next</span>
+            </a>
+          </div>
+        <% else %>
+          <%# Display a single image without the carousel %>
+          <%= image_tag(post.images[0], class: "post-square") %>
+        <% end %>
+
+        <div class="card-body ">
+         <div class="d-flex align-items-left ">
+            <!-- Like Button -->
+            <div class="post-actions text-left">
+              <% pre_like = post.likes.find { |like| like.account_id == current_account.id } %>
+              <% if pre_like %>
+                  <%= button_to '', like_user_post_path(post.id, pre_like), method: :post, class:"fa fa-heart fa-2x border-0 bg-white text-danger " %>
+              <% else %>
+                <%= button_to '', unlike_user_post_path(post_id: post.id), method: :delete, class:"fa fa-heart fa-2x border-0 bg-white text-muted" %>
+              <% end %>
+            </div>
+            <!-- Comment Icon -->
+            <div class="post-actions text-left">
+              <%= link_to post_path(post.id) do %>
+                <i class="fa fa-comment fa-2x text-muted"></i>
+              <% end %>
+            </div>
+          </div>
+          <!-- Likes Count -->
+          <div class="post-actions text-left">
+            <p class="mb-0"><strong><%= post.likes.count %> <%= post.likes.count <= 1 ? 'Like' : 'Likes' %></strong></p>
+          </div>
+          <div class="">
+            <p><strong><%= link_to post.account.username, profile_path(post.account.id), class: "text-dark" %></strong></p>
+            <%= simple_format post.description %>
+          </div>
+          <%= render "posts/comments", post: post %>
+          <%= form_for @comment do |f| %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <div class="input-group">
+              <%= f.text_field :comment, placeholder: "Add comment here...", class: "form-control" %>
+              <div class="input-group-append">
+                <%= f.submit "Post", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+    <div class="col-4">
+      <div class="account-summary">
+        <p class="m-0">
+          <%= link_to profile_picture(current_account, 40), profile_path(current_account.id), class: "rounded-circle mr-2" %>
+          <strong><%= current_account.username %></strong></br>
+          <%= current_account.full_name %>
+        </p>
+      </div>
+      <div class="follower-suggestions mt-4">
+        <div class="float-right">
+          <%= link_to "View All", follower_suggestions_path, class: "text-dark", style: "text-decoration: none;" %>
+        </div>
+        <p class="text-muted"><strong>Suggestions for you</strong></p>
+        <%= render "accounts/follower_suggestions" %>
+      </div>
+    </div>
+  </div>
+</div>
