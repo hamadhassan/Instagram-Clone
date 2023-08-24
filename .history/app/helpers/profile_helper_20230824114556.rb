@@ -1,0 +1,3 @@
+module ProfileHelper
+  following?
+end

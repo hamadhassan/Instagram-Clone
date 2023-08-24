@@ -1,0 +1,14 @@
+<div class="container">
+   <div class="row">
+   <%@account.following.each do |account| %>
+      <div class="col-md-4">
+        <%= link_to profile_picture(account, 40), profile_path(account.id) %>
+          <%= link_to account.username, profile_path(account.id), class: "text-dark text-decoration-none" %>
+      </div>
+
+    <%end%>
+</div>
+</div>
+
+</br>
+

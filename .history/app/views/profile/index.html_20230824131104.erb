@@ -1,0 +1,26 @@
+<div class="container">
+   <div class="row">
+   <%@account.following.each do |account| %>
+
+            <div class=" col-sm-3 col-lg-4">
+                <%= link_to profile_picture(account,40),profile_path(account.id)%>
+            </div>
+            <div class="col-sm-9 col-lg-6">
+              <%= link_to account.username, profile_path(account.id), class:"text-dark text-decoration-none"%> <br/>
+              <p class="text-muted"><%= account.created_at < 2.days.ago ? "New to Instagram" : "Followed by #{account.total_followers} users" %></p>
+            </div>
+            <div class="col-sm-9 col-lg-2">
+              <div class="">
+                  <% if following?(account)%>
+                    <%= button_to "UnFollow", profile_unfollow_path(id: account.id),class: "btn btn-secondary", method: :delete unless can_edit_profile?(account.id)%>
+                  <%else%>
+                    <%= button_to "Follow", profile_follow_path(id: account.id),class: "btn btn-secondary" ,method: :post unless can_edit_profile?(account.id)%>
+                  <%end%>
+            </div>
+
+    <%end%>
+</div>
+</div>
+
+</br>
+

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3 col-6">
+
+     <strong><p> Accept the follow request</p></strong>
+      <% @private_accounts.each do |account| %>
+        <div class="recommended-follower">
+          <div class="row">
+            <div class=" col-sm-3 col-lg-2">
+                <%= link_to profile_picture(account,40),profile_path(account.username)%>
+              <%= link_to account.username, profile_path(account.username), class:"text-dark text-decoration-none"%> <br/>
+            </div>
+            <div class="col-sm-9 col-lg-10">
+              <p class="text-muted"><%= account.created_at < 2.days.ago ? "New to Instagram" : "Followed by #{account.total_followers} users" %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <strong><p> Suggested</p></strong>
+      <% @follower_suggestions.each do |account| %>
+        <div class="recommended-follower">
+          <div class="row">
+            <div class=" col-sm-3 col-lg-2">
+                <%= link_to profile_picture(account,40),profile_path(account.username)%>
+            </div>
+            <div class="col-sm-9 col-lg-10">
+
+
+              <%= link_to account.username, profile_path(account.username), class:"text-dark text-decoration-none"%> <br/>
+              <p class="text-muted"><%= account.created_at < 2.days.ago ? "New to Instagram" : "Followed by #{account.total_followers} users" %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+
