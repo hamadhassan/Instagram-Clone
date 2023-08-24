@@ -53,8 +53,6 @@ class AccountsController < ApplicationController
   def unlike_user_post
     like = @post.likes.find_by(account_id: current_account.id, liked: true)
     like.destroy
-    redirect_to request.referer
-
   end
   private
 

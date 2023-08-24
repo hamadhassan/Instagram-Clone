@@ -5,8 +5,11 @@ class ProfileController < ApplicationController
 
   end
   def show
-    current_account_posts_public=Post.where(account_id: current_account.id,private: false)
-    current_account_posts_private=Post.where(account_id: current_account.id,private: true) if account_signed_in? && current_account.id == @account.id
+    current_account_posts_public=Post.where(account_id: current_account.id,private: true)
+    current_account_posts_private=Post.where(account_id: current_account.id,private: false) if account_signed_in? && current_account.id == @account.id
+    private_accounts_request_accepted = Account.joins(:following_accounts)
+    .where(following_accounts: { follower_id: current_account.id, accepted: true })
+following_account_private_post=Post.where(account_id: private_accounts_request_accepted, private: true)
     @linked_posts = if current_account_posts_private.nil?
                   current_account_posts_public
                 else

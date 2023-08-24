@@ -5,13 +5,17 @@ class ProfileController < ApplicationController
 
   end
   def show
-    current_account_posts_public=Post.where(account_id: current_account.id,private: false)
-    current_account_posts_private=Post.where(account_id: current_account.id,private: true) if account_signed_in? && current_account.id == @account.id
-    @linked_posts = if current_account_posts_private.nil?
-                  current_account_posts_public
-                else
-                  current_account_posts_public.or(current_account_posts_private)
-                end
+    current_account_posts=Post.where(account_id: current_account.id)
+    following_ids_list = current_account.following.pluck(:id)
+    following_acount_public_post=Post.where(account_id: following_ids,private: false)
+    private_accounts_request_accepted = Account.joins(:following_accounts)
+                  .where(following_accounts: { follower_id: current_account.id, accepted: true })
+    following_account_private_post=Post.where(account_id: private_accounts_request_accepted, private: true)
+
+    @posts = @posts.order(created_at: :desc)
+
+
+    @posts =current_account_posts.or(following_acount_public_post).or(following_account_private_post)
   end
   def follow
     if @account.private?

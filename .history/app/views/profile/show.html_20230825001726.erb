@@ -32,7 +32,7 @@
    </div>
    <hr>
     <div class="row profile-post">
-      <%# <% if @show_picture %>
+      <%# <% if @show_picture %> 
         <% @linked_posts.each do |post| %>
           <% if post.images.count > 1 %>
             <div class="col-md-4">
@@ -82,9 +82,9 @@
             </div>
           </div>
           <% end %>
-        <% end%>
-      <%# <% else %>
-      <%# <p class="text-center">This Account is Private. Follow to see their posts.</p> %>
-      <%# <% end %>
+        <% end %>
+      <% else %>
+      <p class="text-center">This Account is Private. Follow to see their posts.</p>
+      <% end %>
     </div>
 </div>

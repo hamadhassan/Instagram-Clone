@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
 
 
     @posts =current_account_posts.or(following_acount_public_post).or(following_account_private_post)
-    @posts = @posts.order(created_at: :desc)
+    #  @posts = @posts.order(created_at: :desc)
   end
 
 
@@ -36,7 +36,7 @@ class AccountsController < ApplicationController
     return unless follower
 
     follower.update(accepted: true)
-    redirect_to request.referer
+    redirect_to dashboard_path
   end
   def follower_suggestions
     following_ids = Relationship.where(follower_id: current_account.id).map(&:following_id)
@@ -47,14 +47,10 @@ class AccountsController < ApplicationController
   end
   def like_user_post
     like = @post.likes.create(account_id: current_account.id, liked: true)
-    redirect_to request.referer
-
   end
   def unlike_user_post
     like = @post.likes.find_by(account_id: current_account.id, liked: true)
     like.destroy
-    redirect_to request.referer
-
   end
   private
 

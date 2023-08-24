@@ -5,14 +5,15 @@ class ProfileController < ApplicationController
 
   end
   def show
-    current_account_posts_public=Post.where(account_id: current_account.id,private: false)
-    current_account_posts_private=Post.where(account_id: current_account.id,private: true) if account_signed_in? && current_account.id == @account.id
+    current_account_posts_public=Post.where(account_id: current_account.id,private: true)
+    current_account_posts_private=Post.where(account_id: current_account.id,private: false) if account_signed_in? && current_account.id == @account.id
+
     @linked_posts = if current_account_posts_private.nil?
-                  current_account_posts_public
-                else
-                  current_account_posts_public.or(current_account_posts_private)
-                end
-  end
+      current_account_posts_public
+    else
+      current_account_posts_public.or(current_account_posts_private)
+    end
+  end@linked_posts =current_account_posts_public.or(current_account_posts_private if current_account_posts_private.nil?)
   def follow
     if @account.private?
       Relationship.create_or_find_by(follower_id: current_account.id, following_id: @account.id,accepted: false)
