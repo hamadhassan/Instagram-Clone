@@ -1,5 +1,5 @@
-# rubocop:disable all
 # frozen_string_literal: true
+# rubocop:disable all
 
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -120,4 +120,3 @@ ActiveRecord::Schema[7.0].define(version: 20_230_824_054_130) do
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'stories', 'accounts'
 end
-# rubocop:enable all

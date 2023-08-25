@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :posts
   resources :comments
   # resources :comments do
@@ -31,11 +30,9 @@ Rails.application.routes.draw do
 
   get 'search/index'
 
-
   resources :profile, only: [:index]
   get 'profile/:id', to: 'profile#show', as: :profile
   post 'profile/follow', to: 'profile#follow'
   delete 'profile/unfollow', to: 'profile#unfollow'
   post 'profile/accept_follow_request', to: 'profile#accept_follow_request'
-
 end

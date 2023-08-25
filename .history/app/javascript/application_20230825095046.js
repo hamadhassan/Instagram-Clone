@@ -7,6 +7,8 @@ import "controllers"
 $(function(){
   $(".post-comment").on("click",function(){
     $("comment_comment").focus();
+
+
   $('#registration-form').on('submit', function() {
     $(this).find('input[type=text], input[type=email], input[type=password]').val('');
   });
@@ -42,5 +44,4 @@ $(function(){
       }
     });
   });
-});
 });

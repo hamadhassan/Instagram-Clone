@@ -72,17 +72,4 @@ class PostsController < ApplicationController
   def current_user_can_edit_post?
     @post.account_id == current_account.id
   end
-
-  def update_post_attributes
-    return unless @post.update(post_params)
-
-    @post.save
-  end
-
-  def handle_images
-    return if params[:post][:images].blank?
-
-    @post.images.purge
-    @post.images.attach(params[:post][:images])
-  end
 end

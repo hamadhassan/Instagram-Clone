@@ -120,4 +120,4 @@ ActiveRecord::Schema[7.0].define(version: 20_230_824_054_130) do
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'stories', 'accounts'
 end
-# rubocop:enable all
+# rubocop:ensable all

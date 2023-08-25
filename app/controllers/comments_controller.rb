@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
-
     @comment = Comment.new(comment_params)
     @comment.account_id = current_account.id if account_signed_in?
     if save_comment_and_redirect

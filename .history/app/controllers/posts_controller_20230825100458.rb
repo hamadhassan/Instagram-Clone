@@ -74,9 +74,9 @@ class PostsController < ApplicationController
   end
 
   def update_post_attributes
-    return unless @post.update(post_params)
-
-    @post.save
+    if @post.update(post_params)
+      @post.save
+    end
   end
 
   def handle_images
@@ -85,4 +85,5 @@ class PostsController < ApplicationController
     @post.images.purge
     @post.images.attach(params[:post][:images])
   end
+
 end

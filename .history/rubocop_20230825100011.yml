@@ -31,7 +31,13 @@ Lint/AmbiguousBlockAssociation:
 
 Style/Documentation:
   Enabled: false
+AllCops:
+  DisabledByDefault: false
   
+Lint/AssignmentBranchCondition:
+  Exclude:
+    - 'app/controllers/accounts_controller.rb'
+
 Metrics/MethodLength:
   Exclude:
-    - 'db/schema.rb'
+    - 'app/controllers/accounts_controller.rb'

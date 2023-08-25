@@ -31,7 +31,7 @@ Lint/AmbiguousBlockAssociation:
 
 Style/Documentation:
   Enabled: false
-  
-Metrics/MethodLength:
-  Exclude:
-    - 'db/schema.rb'
+
+Style/Documentation:
+Exclude:
+  - 'controllers/to/your_file.rb'

@@ -6,6 +6,8 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[profile index]
   before_action :find_post, only: %i[like_user_post unlike_user_post]
 
+  # rubocop:disable Metrics/AbcSize
+
   def index
     @comment = Comment.new
     following_ids = following_account_ids
@@ -15,6 +17,7 @@ class AccountsController < ApplicationController
 
     @posts = @posts.order(created_at: :desc)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def accept_follow_request
     following_id = params[:follow_id]

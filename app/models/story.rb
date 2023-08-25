@@ -2,7 +2,7 @@
 
 # Represents stories created by users in the application.
 class Story < ApplicationRecord
-  #association
+  # association
   belongs_to :account
   has_one_attached :image
   # Validations
@@ -12,13 +12,14 @@ class Story < ApplicationRecord
   private
 
   def image_format
-    if image.attached? && !image.content_type.in?(%w(image/jpeg image/png))
-      errors.add(:image, "Only JPEG and PNG images are allowed")
-    end
+    return unless image.attached? && !image.content_type.in?(%w[image/jpeg image/png])
+
+    errors.add(:image, 'Only JPEG and PNG images are allowed')
   end
+
   def image_presense
-    if image.attached? == false || image.blank?
-      errors.add(:images, "must be attached")
-    end
+    return unless image.attached? == false || image.blank?
+
+    errors.add(:images, 'must be attached')
   end
 end

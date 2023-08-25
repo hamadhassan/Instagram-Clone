@@ -6,15 +6,27 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[profile index]
   before_action :find_post, only: %i[like_user_post unlike_user_post]
 
+  # rubocop:disable Metrics/AbcSize
+
   def index
     @comment = Comment.new
-    following_ids = following_account_ids
-    private_accounts = private_accounts_request_accepted
+    following_ids = Relationship.where(follower_id: current_account.id).map(&:following_id)
+    following_ids << current_account.id
+    @follower_suggestions = Account.where.not(id: following_ids + [current_account.id]).limit(5)
 
-    @posts = relevant_posts(private_accounts, following_ids)
+    # Get the private posts if the account folow request acepted is true
+    current_account_posts = Post.where(account_id: current_account.id)
+    current_account.following.pluck(:id)
+    following_acount_public_post = Post.where(account_id: following_ids, private: false)
+    private_accounts_request_accepted = Account.joins(:following_accounts)
+                                               .where(following_accounts: { follower_id: current_account.id,
+                                                                            accepted: true })
+    following_account_private_post = Post.where(account_id: private_accounts_request_accepted, private: true)
 
+    @posts = current_account_posts.or(following_acount_public_post).or(following_account_private_post)
     @posts = @posts.order(created_at: :desc)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def accept_follow_request
     following_id = params[:follow_id]
@@ -59,23 +71,5 @@ class AccountsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:post_id])
-  end
-
-  def following_account_ids
-    following_ids = Relationship.where(follower_id: current_account.id).pluck(:following_id)
-    following_ids << current_account.id
-  end
-
-  def private_accounts_request_accepted
-    Account.joins(:following_accounts)
-           .where(following_accounts: { follower_id: current_account.id, accepted: true })
-  end
-
-  def relevant_posts(private_accounts, following_ids)
-    current_account_posts = Post.where(account_id: current_account.id)
-    following_account_posts = Post.where(account_id: following_ids, private: false)
-    following_account_private_posts = Post.where(account_id: private_accounts, private: true)
-
-    current_account_posts.or(following_account_posts).or(following_account_private_posts)
   end
 end

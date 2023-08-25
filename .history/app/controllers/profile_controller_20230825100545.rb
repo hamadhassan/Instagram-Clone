@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# This controller handles the management of profile.
+# This controller handles the management of posts.
 class ProfileController < ApplicationController
   before_action :authenticate_account!
   before_action :set_account
