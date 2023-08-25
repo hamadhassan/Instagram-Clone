@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # rubocop:enable Metrics/AbcSize
   def destroy
-    # byebug
+    byebug
     @comment.destroy
     redirect_to request.referer
   end

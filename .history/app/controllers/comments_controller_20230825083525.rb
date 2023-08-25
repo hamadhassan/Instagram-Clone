@@ -8,22 +8,20 @@ class CommentsController < ApplicationController
 
   # rubocop:disable Metrics/AbcSize
   def create
-
     @comment = Comment.new(comment_params)
-    @comment.account_id = current_account.id if account_signed_in?
-    if save_comment_and_redirect
-      return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path
-      redirect_to return_url, flash: { success: 'Comment was created successfully!' }
-    else
-      redirect_to dashboard_path, flash: { danger: 'Comment was not saved!' }
-    end
+    # @comment.account_id = current_account.id if account_signed_in?
+    # if save_comment_and_redirect
+    #   return_url = params[:comment][:return_to].present? ? post_path(@comment.post_id) : dashboard_path
+    #   redirect_to return_url, flash: { success: 'Comment was created successfully!' }
+    # else
+    #   redirect_to dashboard_path, flash: { danger: 'Comment was not saved!' }
+    # end
   end
 
   # rubocop:enable Metrics/AbcSize
   def destroy
-    # byebug
     @comment.destroy
-    redirect_to request.referer
+    redirect_to @comment.post, notice: 'Comment deleted successfully.'
   end
 
   def edit
@@ -51,8 +49,7 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment
-    # byebug
-    return if current_account == @comment.account || current_account == @comment.post.account
+    return if current_account == @comment.account && current_account == @comment.post.account
 
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to root_path

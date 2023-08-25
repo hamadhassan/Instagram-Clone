@@ -6,8 +6,8 @@
     <%= comment.comment%>
     <div class="d-flex row ml-2">
       <p class="text-muted pt-2"> <%= time_ago_in_words comment.created_at%> ago</p>
-      <%= button_to "Delete", comment_path(comment), method: :delete , class:"btn btn-link text-decoration-none text-muted"  if current_account == comment.account || current_account == comment.post.account%>
-      <%= link_to "Edit", edit_comment_path(comment), class: "edit-comment-link text-muted mt-2", remote: true if current_account == comment.account || current_account == comment.post.account %>
+      <%= button_to "Delete", comment_path(comment), method: :delete , class:"btn btn-link text-decoration-none text-muted" %>
+      <%= link_to "Edit", edit_comment_path(comment), class: "edit-comment-link text-muted mt-2", remote: true  %>
     </div>
   </div>
 <%end%>

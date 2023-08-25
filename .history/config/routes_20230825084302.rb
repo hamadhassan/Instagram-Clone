@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
   resources :posts
-  resources :comments
+  resources :comments, only: []
   # resources :comments do
   #   get 'edit', on: :member
   # end

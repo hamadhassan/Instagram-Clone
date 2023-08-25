@@ -4,7 +4,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_account!
   before_action :find_comment, only: %i[edit update destroy]
-  before_action :authorize_comment, only: %i[edit update destroy]
+  #before_action :authorize_comment, only: %i[edit update destroy]
 
   # rubocop:disable Metrics/AbcSize
   def create
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # rubocop:enable Metrics/AbcSize
   def destroy
-    # byebug
+    byebug
     @comment.destroy
     redirect_to request.referer
   end
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment
-    # byebug
+    byebug
     return if current_account == @comment.account || current_account == @comment.post.account
 
     flash[:alert] = 'You are not authorized to perform this action.'

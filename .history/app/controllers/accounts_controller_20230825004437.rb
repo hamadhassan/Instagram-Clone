@@ -34,7 +34,6 @@ class AccountsController < ApplicationController
     following_account = Account.find_by(id: following_id)
     follower = Follower.find_by(following_id: following_account.id, follower_id: current_account.id)
     return unless follower
-    redirect_to request.referer
 
     follower.update(accepted: true)
     redirect_to request.referer
@@ -54,7 +53,7 @@ class AccountsController < ApplicationController
   def unlike_user_post
     like = @post.likes.find_by(account_id: current_account.id, liked: true)
     like.destroy
-    redirect_to request.referer
+        redirect_to request.referer
 
   end
   private
