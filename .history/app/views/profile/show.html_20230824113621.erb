@@ -1,0 +1,12 @@
+<h1>Profile#show</h1>
+<p>Find me in app/views/profile/show.html.erb</p>
+
+
+<h1><%= @account.email%> </h1>
+<br/>
+<h1><%= @account.following.count%> following</h1>
+<% if account ==current_account%>
+    <%= link_to 'Edit Profile', edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
+<% elsif current_account%>
+
+<%end%>

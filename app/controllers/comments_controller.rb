@@ -20,8 +20,9 @@ class CommentsController < ApplicationController
 
   # rubocop:enable Metrics/AbcSize
   def destroy
+    # byebug
     @comment.destroy
-    redirect_to @comment.post, notice: 'Comment deleted successfully.'
+    redirect_to request.referer
   end
 
   def edit
@@ -49,7 +50,8 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment
-    return if current_account == @comment.account && current_account == @comment.post.account
+    # byebug
+    return if current_account == @comment.account || current_account == @comment.post.account
 
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to root_path

@@ -1,0 +1,17 @@
+<h1>Profile#show</h1>
+<p>Find me in app/views/profile/show.html.erb</p>
+
+
+<h1><%= @account.email%> </h1>
+<br/>
+<%= @account.following.count%> following
+<%= pluralize(@account.followers.count,"follower")%>
+<% if @account ==current_account%>
+    <%= link_to 'Edit Profile', edit_account_registration_path, class: "btn btn-secondary" if can_edit_profile?(@account.id) %>
+<% elsif current_account%>
+  <% if following?(@account)%>
+    <%= button_to "UnFollow", profile_unfollow_path(id: @account.id), method: :delete%>
+  <%else%>
+    <%= button_to "Follow", profile_follow(id: @account.id), method: :post%>
+  <%end%>
+<%end%>

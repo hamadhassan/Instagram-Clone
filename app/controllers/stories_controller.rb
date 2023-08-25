@@ -5,7 +5,8 @@ class StoriesController < ApplicationController
   before_action :authenticate_account!
 
   def index
-    @stories = Story.where('expires_at >= ?', Time.now)
+    @stories = Story.where('expires_at >= ?', Time.now).where.not(account_id: current_account.id)
+    @current_account_stoires = Story.where(account_id: current_account.id) if account_signed_in?
   end
 
   def new

@@ -1,0 +1,16 @@
+<%post.comments.each do |comment|%>
+  <div class="comment">
+    <%=link_to profile_picture(comment.account,20),profile_path(comment.account.username), class:"float-left m-r-15"%>
+    <strong><%=link_to comment.account.username, profile_path(comment.account.username), class:"text-dark text-decoration-none" %></strong>
+
+    <%= comment.comment%>
+    <div class="d-flex row ml-2">
+      <p class="text-muted pt-2"> <%= time_ago_in_words comment.created_at%> ago</p>
+
+      byebug
+      
+      <%= button_to "Delete", comment_path(comment), method: :delete , class:"btn btn-link text-decoration-none text-muted"  %>
+      <%= link_to "Edit", edit_comment_path(comment), class: "edit-comment-link text-muted mt-2", remote: true  %>
+    </div>
+  </div>
+<%end%>

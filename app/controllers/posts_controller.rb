@@ -12,11 +12,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.account_id = current_account.id if account_signed_in?
-    if @post.save
-      redirect_to dashboard_path, flash: { success: 'Post was created successfully!' }
-    else
-      redirect_to new_post_path, flash: { success: 'Post was not saved!' }
-    end
+    return unless @post.save
+
+    redirect_to dashboard_path, flash: { success: 'Post was created successfully!' }
   end
 
   def show
@@ -39,12 +37,12 @@ class PostsController < ApplicationController
   def update
     return if current_user_cannot_edit_post?
 
-    if @post.update(post_params)
-      update_post_images
-      redirect_to @post, notice: 'Post was successfully updated.'
-    else
-      render 'edit'
-    end
+    update_post_attributes
+    handle_images
+
+    # else params[:post][:images].present? && params[:post][:images].any?
+    #   @post.images.purge
+    #   @post.images.attach(params[:post][:images])
   end
 
   private
@@ -73,5 +71,18 @@ class PostsController < ApplicationController
 
   def current_user_can_edit_post?
     @post.account_id == current_account.id
+  end
+
+  def update_post_attributes
+    return unless @post.update(post_params)
+
+    @post.save
+  end
+
+  def handle_images
+    return if params[:post][:images].blank?
+
+    @post.images.purge
+    @post.images.attach(params[:post][:images])
   end
 end

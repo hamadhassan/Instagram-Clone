@@ -1,0 +1,20 @@
+<div class="container">
+   <div class="row">
+    <% if abc%>
+    <% @account.following.each do |account| %>
+    <div class="col-sm-3 offset-3 col-lg-2 my-3">
+        <%= link_to profile_picture(account, 40), profile_path(account.id) %>
+          <%= link_to account.username, profile_path(account.id), class: "text-dark text-decoration-none" %>
+      </div>
+        <div class="col-sm-9 col-lg-3 my-3">
+          <div class="float-right">
+          <% if following?(account)%>
+            <%= button_to "UnFollow", profile_unfollow_path(id: account.id),class: "btn btn-secondary", method: :delete unless can_edit_profile?(account.id)%>
+          <%else%>
+            <%= button_to "Follow", profile_follow_path(id: account.id),class: "btn btn-secondary" ,method: :post unless can_edit_profile?(account.id)%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+</div>
+</div>
